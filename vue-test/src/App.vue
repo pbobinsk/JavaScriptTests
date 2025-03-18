@@ -57,6 +57,7 @@ const fetchBreedImage = async () => {
       
       <!-- Tabela z dodatkowymi informacjami -->
       <table class="breed-info-table">
+      <tbody>
         <tr>
           <td><strong>Przyjazny dla psów:</strong></td>
           <td>{{ selectedBreed.dog_friendly }}/5</td>
@@ -69,6 +70,7 @@ const fetchBreedImage = async () => {
           <td><strong>Długość życia:</strong></td>
           <td>{{ selectedBreed.life_span }} lat</td>
         </tr>
+        </tbody>
       </table>
 
       <!-- Zdjęcie kota -->
