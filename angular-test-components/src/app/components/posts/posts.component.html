@@ -1,0 +1,5 @@
+<h2>📩 Posty z API</h2>
+<ul *ngIf="posts.length > 0">
+  <li *ngFor="let post of posts">{{ post.title }}</li>
+</ul>
+<p *ngIf="posts.length === 0">Ładowanie postów...</p>
