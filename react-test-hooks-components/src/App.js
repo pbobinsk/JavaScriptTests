@@ -4,15 +4,19 @@ import TaskList from "./components/TaskList";
 import UserInfo from "./components/UserInfo";
 import Posts from "./components/Posts";
 
+import './App.css';
+
 function App() {
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Aplikacja React z useState & useEffect</h1>
-      <Counter />
-      <TaskList />
-      <UserInfo />
-      <Posts />
-    </div>
+<div className="container">
+  <h2 className="title">Moja aplikacja z komponentami</h2>
+  <div className="components">
+      <Counter className="component-box" />
+      <TaskList className="component-box" />
+      <UserInfo className="component-box" />
+      <Posts className="component-box" />
+  </div>
+</div>
   );
 }
 
