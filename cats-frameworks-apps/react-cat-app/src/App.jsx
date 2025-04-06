@@ -1,25 +1,19 @@
-import React, { useState } from 'react';
+import { Box } from '@mui/material';
+import { useState } from 'react';
+import './App.css';
+import FavouritesFeed from './components/FavouritesFeed';
 import NavBar from './components/NavBar';
-import CatList from './components/CatList';
-import FavouriteCats from './components/FavouriteCats';
-import Container from '@mui/material/Container';
+import Feed from './components/RandomFeed';
 
 function App() {
-  const [favouriteCats, setFavouriteCats] = useState([]);
 
-  const addToFavourites = (cat) => {
-    setFavouriteCats((prev) => [...prev, cat]);
-  };
+  const [showFavorites, setShowFavorites] = useState(false);
 
   return (
-    <>
-      <NavBar />
-      <Container>
-        <CatList onAddFavourite={addToFavourites} />
-        <FavouriteCats favourites={favouriteCats} />
-      </Container>
-    </>
-  );
+    <Box>
+      <NavBar onModeChange={setShowFavorites}></NavBar>
+      {!!showFavorites? <FavouritesFeed/> : <Feed></Feed>}
+      </Box>)
 }
 
 export default App;
