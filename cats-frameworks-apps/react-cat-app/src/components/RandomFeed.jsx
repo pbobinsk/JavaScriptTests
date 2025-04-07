@@ -20,6 +20,7 @@ const Feed = () => {
             });
             const json = await response.json();
             setImages(json);
+            console.log('images set')
         
         }catch(e){
             console.log(e)
@@ -27,9 +28,14 @@ const Feed = () => {
 
     }
 
+    const hasFetched = React.useRef(false);
+
     useEffect(() => {
+        if (hasFetched.current) return;
+        hasFetched.current = true;
         refreshImages();
-    }, [])
+    }, []);
+
 
     return (
         <>
