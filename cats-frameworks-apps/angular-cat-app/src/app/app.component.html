@@ -1,0 +1,9 @@
+<app-navbar
+  [title]="appTitle"
+  (modeChange)="handleModeChange($event)">
+</app-navbar>
+
+<main>
+  <h1>Witaj w aplikacji!</h1>
+  <p>Aktualny tryb (zmienna w AppComponent): {{ currentModeIsFavourites ? 'Ulubione' : 'Losowe' }}</p>
+  </main>

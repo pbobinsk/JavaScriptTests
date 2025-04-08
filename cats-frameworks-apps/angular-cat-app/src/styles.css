@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+
+ /* Dodaj to w src/styles.css w projekcie Angular */
+mat-toolbar.mat-primary { /* Celuj w toolbar z kolorem 'primary' */
+    background-color: #115bee; /* Ustaw pożądane tło */
+    color: white; /* Upewnij się, że tekst będzie widoczny */
+  }
