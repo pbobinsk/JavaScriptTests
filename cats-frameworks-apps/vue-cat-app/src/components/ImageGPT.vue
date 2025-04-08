@@ -21,6 +21,16 @@
           @change="handleFavouriteToggle"
           :on-icon="'mdi-heart'"
           :off-icon="'mdi-heart-outline'"
+          color="blue"
+          hide-details
+        ></v-checkbox>
+        <v-checkbox
+          v-model="favouriteState"
+          :true-value="true"
+          :false-value="false"
+          @change="handleFavouriteToggle"
+          :true-icon="'mdi-heart'"
+          :false-icon="'mdi-heart-outline'"
           color="red"
           hide-details
         ></v-checkbox>
