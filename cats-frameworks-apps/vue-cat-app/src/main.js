@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import './style.css'
+// import './style.css'
+import './stylereact.css'
 import App from './App.vue'
 
 // Vuetify:
