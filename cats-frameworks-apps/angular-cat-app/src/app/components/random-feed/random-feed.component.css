@@ -1,0 +1,30 @@
+.feed-container {
+    position: relative; /* Dla pozycjonowania spinnera */
+    min-height: 200px; /* Aby spinner był widoczny na początku */
+    padding-top: 20px;
+  }
+  
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Odstęp między kartami */
+    justify-content: center; /* Wyśrodkowanie kart w kontenerze */
+  }
+  
+  .loading-indicator, .no-images, .error-message {
+    display: flex;
+    flex-direction: column; /* Spinner nad tekstem */
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+  .loading-indicator p {
+      margin-top: 15px;
+  }
+  
+  .error-message {
+    color: red;
+  }

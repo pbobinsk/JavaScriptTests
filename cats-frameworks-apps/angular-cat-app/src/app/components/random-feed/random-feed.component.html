@@ -1,0 +1,21 @@
+<div class="feed-container">
+    <div *ngIf="isLoading" class="loading-indicator">
+      <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+      <p>Loading cat images...</p>
+    </div>
+  
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+  
+    <div *ngIf="(images$ | async) as images; else noImages" class="image-grid">
+      <app-image-card
+        *ngFor="let image of images"
+        [imageData]="image">
+      </app-image-card>
+    </div>
+  
+    <ng-template #noImages>
+      <div *ngIf="!isLoading && !error" class="no-images">
+          No images found or still loading first data.
+      </div>
+    </ng-template>
+  </div>

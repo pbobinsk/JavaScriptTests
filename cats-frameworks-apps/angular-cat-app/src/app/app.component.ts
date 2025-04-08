@@ -4,17 +4,25 @@ import { CommonModule } from '@angular/common'; // CommonModule często jest pot
 // 1. Zaimportuj NavbarComponent
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+// Zaimportuj RandomFeedComponent
+import { RandomFeedComponent } from './components/random-feed/random-feed.component';
+// Później dodamy FavouritesFeedComponent
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    NavbarComponent // 2. Dodaj NavbarComponent do imports
+    NavbarComponent, // 2. Dodaj NavbarComponent do imports
     // Tutaj dodasz inne komponenty, jak RandomFeedComponent, FavouritesFeedComponent później
+    RandomFeedComponent // Dodaj tutaj
+    // FavouritesFeedComponent // Dodamy później
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   // 3. Właściwość do przekazania jako [title] do navbara
   appTitle = 'Angular Kitties - Standalone Navbar';

@@ -41,3 +41,10 @@
     color: #888;
   }
   
+  /* src/app/app.component.css */
+.content-container {
+  padding: 20px;
+  /* Możesz tu dodać max-width i margin: auto, jeśli nie dałeś tego na body */
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+}

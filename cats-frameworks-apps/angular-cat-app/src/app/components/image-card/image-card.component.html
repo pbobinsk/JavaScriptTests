@@ -1,0 +1,11 @@
+<mat-card class="image-card">
+    <mat-card-header>
+      <mat-card-title>{{ breedName }}</mat-card-title>
+    </mat-card-header>
+    <div class="image-container">
+      <img [src]="imageData.url" [alt]="breedName" class="card-image">
+    </div>
+    <mat-card-content *ngIf="breedTemperament">
+      <p><strong>Temperament:</strong> {{ breedTemperament }}</p>
+    </mat-card-content>
+    </mat-card>

@@ -3,7 +3,10 @@
   (modeChange)="handleModeChange($event)">
 </app-navbar>
 
-<main>
-  <h1>Witaj w aplikacji!</h1>
-  <p>Aktualny tryb (zmienna w AppComponent): {{ currentModeIsFavourites ? 'Ulubione' : 'Losowe' }}</p>
-  </main>
+<main class="content-container">
+  <app-random-feed *ngIf="!currentModeIsFavourites"></app-random-feed>
+
+  <p style="text-align: center; margin-top: 20px; font-style: italic;">
+    Tryb: {{ currentModeIsFavourites ? 'Ulubione' : 'Losowe' }}
+  </p>
+</main>
