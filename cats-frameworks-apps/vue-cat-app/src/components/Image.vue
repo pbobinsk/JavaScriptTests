@@ -1,109 +1,96 @@
 <template>
-  <v-card class="ma-2" max-width="345">
-    <v-img
-      :src="data.url"
-      height="300px"
-      cover
-      :alt="breed.name || 'Cat image'"
-    ></v-img>
-
-    <v-card-item>
+    <v-card class="ma-2" max-width="345">
+        
+      <v-img
+        :src="data.url"
+        :alt="breed.name"
+        height="300"
+        cover
+      ></v-img>
+  
+      <v-card-item>
        <v-card-title v-if="breed.name">{{ breed.name }}</v-card-title>
-       </v-card-item>
+      </v-card-item>
 
 
     <v-card-text v-if="breed.temperament">
       {{ breed.temperament }}
     </v-card-text>
-
-    <v-card-actions>
-      <v-btn
-        icon
-        :color="isFavourite ? 'blue' : undefined"
-        @click="handleFavouriteToggle"
-        aria-label="add to favorites"
-        :loading="isTogglingFavourite"
-      >
-        <v-icon>{{ isFavourite ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
-      </v-btn>
+      
+      <v-card-actions>
+        <v-checkbox
+          v-model="favouriteState"
+          :true-value="true"
+          :false-value="false"
+          @change="handleFavouriteToggle"
+          :true-icon="'mdi-heart'"
+          :false-icon="'mdi-heart-outline'"
+          color="blue"
+          hide-details
+        ></v-checkbox>
       </v-card-actions>
-  </v-card>
-</template>
-
-<script setup>
-import { ref, computed, defineProps, defineEmits } from 'vue';
-
-// Definicja propsów
-const props = defineProps({
-  data: {
-    type: Object,
-    required: true,
-  },
-});
-
-// Definicja emitowanych zdarzeń
-const emit = defineEmits(['unfavourited']);
-
-// Klucz API ze zmiennych środowiskowych (upewnij się, że VITE_CAT_API_KEY jest ustawiony)
-const apiKey = import.meta.env.VITE_CAT_API_KEY;
-
-// Stan wewnętrzny
-const favouriteData = ref(props.data.favourite); // Przechowuje obiekt ulubionego lub null
-const isTogglingFavourite = ref(false); // Flaga ładowania podczas zmiany statusu ulubionego
-
-// Obliczony stan - czy obrazek jest ulubiony (boolean)
-const isFavourite = computed(() => !!favouriteData.value);
-
-// Obliczony stan - dane rasy (zabezpieczenie przed brakiem danych)
-const breed = computed(() => props.data.breeds?.[0] || {});
-
-// Funkcja obsługująca dodawanie/usuwanie z ulubionych
-async function handleFavouriteToggle() {
-  if (!apiKey) {
-    console.error('VITE_CAT_API_KEY is not set!');
-    return;
-  }
-  isTogglingFavourite.value = true;
-
-  const currentlyFavourited = isFavourite.value;
-  const headers = {
-    'content-type': 'application/json',
-    'x-api-key': apiKey,
-  };
-
-  try {
-    if (!currentlyFavourited) {
-      // Dodawanie do ulubionych
-      const response = await fetch('https://api.thecatapi.com/v1/favourites', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({ image_id: props.data.id }),
-      });
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const newFavourite = await response.json();
-      favouriteData.value = newFavourite; // Zaktualizuj stan o dane nowego ulubionego
+    </v-card>
+  </template>
+  
+  <script setup>
+  import { ref, computed } from 'vue'
+  
+  const props = defineProps({
+    data: {
+      type: Object,
+      required: true
+    },
+    onUnFavourite: Function
+  })
+  
+  const emit = defineEmits(['unfavourited'])
+  
+  const favourite = ref(props.data.favourite)
+  const favouriteState = computed({
+  get: () => !!favourite.value,
+  set: (val) => {}
+})
+  
+  const breed = computed(() => props.data.breeds?.[0] || {})
+  
+  async function handleFavouriteToggle() {
+    const isFavouriting = !favourite.value
+  
+    if (isFavouriting) {
+      const rawBody = JSON.stringify({ image_id: props.data.id })
+  
+      try {
+        const response = await fetch('https://api.thecatapi.com/v1/favourites', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'x-api-key': import.meta.env.VITE_CAT_API_KEY
+          },
+          body: rawBody
+        })
+  
+        const newFavourite = await response.json()
+        favourite.value = newFavourite
+      } catch (err) {
+        console.error(err)
+      }
+  
     } else {
-      // Usuwanie z ulubionych
-      const favouriteId = favouriteData.value.id;
-      const response = await fetch(`https://api.thecatapi.com/v1/favourites/${favouriteId}`, {
-        method: 'DELETE',
-        headers,
-      });
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-      // Po pomyślnym usunięciu
-      favouriteData.value = null; // Zresetuj stan ulubionego
-      emit('unfavourited', favouriteId); // Emituj zdarzenie do rodzica
+      try {
+        await fetch(`https://api.thecatapi.com/v1/favourites/${favourite.value.id}`, {
+          method: 'DELETE',
+          headers: {
+            'content-type': 'application/json',
+            'x-api-key': import.meta.env.VITE_CAT_API_KEY
+          }
+        })
+  
+        emit('unfavourited', favourite.value.id)
+        favourite.value = null
+      } catch (err) {
+        console.error(err)
+      }
     }
-  } catch (error) {
-    console.error('Failed to toggle favourite:', error);
-    // Można dodać powiadomienie dla użytkownika
-  } finally {
-    isTogglingFavourite.value = false;
   }
-}
-</script>
-
-<style scoped>
-/* Style specyficzne dla komponentu */
-</style>
+  </script>
+  

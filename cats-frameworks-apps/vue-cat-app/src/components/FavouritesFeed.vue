@@ -10,15 +10,6 @@
       >
       <Image :data="image" @unfavourited="onImageUnfavourited" />
       </v-col>
-      <v-col
-        v-for="image in images"
-        :key="image.id"
-        cols="12"
-        sm="6"
-        md="4"
-      >
-      <ImageGPT :data="image" @unfavourited="onImageUnfavourited" />
-      </v-col>
     </v-row>
 
     <v-row justify="center" v-if="images.length === 0">
@@ -32,7 +23,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Image from './Image.vue'
-import ImageGPT from './ImageGPT.vue'
 
 
 const images = ref([])

@@ -1,10 +1,12 @@
 <template>
   <v-app>
   <NavBar @mode-change="showFavorites = $event" />
+  <v-main>
   <v-container fluid>
     <FavouritesFeed v-if="showFavorites" />
     <RandomFeed v-else /> 
   </v-container>
+</v-main>
 </v-app>
 </template>
 
