@@ -26,3 +26,8 @@ export interface Breed {
       }
       // inne pola...
   }
+
+  export interface FavouriteInfo {
+    id: number | string; // ID nowo utworzonego ulubionego
+    message?: string; // API często zwraca komunikat SUCCESS
+  }

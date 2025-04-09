@@ -2,6 +2,7 @@
     width: 345px;
     margin-bottom: 16px;
     overflow: hidden;
+    position: relative; /* Potrzebne do pozycjonowania absolutnego spinnera */
   }
   
   .image-container {
@@ -11,6 +12,7 @@
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0;
+    position: relative; /* Potrzebne dla spinnera wewnątrz */
   }
   
   .card-image {
@@ -48,4 +50,23 @@
 
 .error-message {
   color: red;
+}
+
+/* Styl dla spinnera w rogu obrazka */
+.favourite-spinner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* Można dodać tło dla lepszej widoczności */
+  /* background-color: rgba(255, 255, 255, 0.7); */
+  /* border-radius: 50%; */
+}
+
+
+/* Upewnijmy się, że akcje są na dole i przycisk jest po lewej */
+.card-actions-container {
+  display: flex;
+  justify-content: flex-start; /* Przycisk na lewo */
+  padding: 8px 16px !important; /* Dopasowanie paddingu, !important może być potrzebne */
+  min-height: 52px; /* Zapewnia stałą wysokość sekcji akcji */
 }

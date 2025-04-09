@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RandomFeedComponent } from './components/random-feed/random-feed.component';
 // Później dodamy FavouritesFeedComponent
 
+import { MatButtonModule } from '@angular/material/button'; // Importuj moduł przycisku
+
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,7 @@ import { RandomFeedComponent } from './components/random-feed/random-feed.compon
     // Tutaj dodasz inne komponenty, jak RandomFeedComponent, FavouritesFeedComponent później
     RandomFeedComponent // Dodaj tutaj
     // FavouritesFeedComponent // Dodamy później
+    ,MatButtonModule // <-- Dodaj tutaj
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

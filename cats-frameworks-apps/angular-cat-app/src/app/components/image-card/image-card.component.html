@@ -1,11 +1,24 @@
 <mat-card class="image-card">
-    <mat-card-header>
-      <mat-card-title>{{ breedName }}</mat-card-title>
-    </mat-card-header>
-    <div class="image-container">
+    
+  <mat-card-header>
+    <mat-card-title>{{ breedName }}</mat-card-title>
+  </mat-card-header>
+  
+  <div class="image-container">
       <img [src]="imageData.url" [alt]="breedName" class="card-image">
-    </div>
-    <mat-card-content *ngIf="breedTemperament">
+  </div>
+  
+  <mat-card-content *ngIf="breedTemperament">
       <p><strong>Temperament:</strong> {{ breedTemperament }}</p>
-    </mat-card-content>
-    </mat-card>
+  </mat-card-content>
+
+  <mat-card-actions class="card-actions-container">
+    <button mat-icon-button
+            color="primary"  
+            aria-label="Toggle favourite"
+            (click)="toggleFavourite()"
+            [disabled]="isProcessingFavourite">
+       <mat-icon>{{ isFavourite ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+     </mat-card-actions>  
+</mat-card>

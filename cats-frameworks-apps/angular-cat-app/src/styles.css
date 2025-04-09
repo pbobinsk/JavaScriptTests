@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css"; /* <-- Czy jest taka linia? */
+
+
 
 
 body {
@@ -16,8 +18,5 @@ code {
   }
   
 
- /* Dodaj to w src/styles.css w projekcie Angular */
-mat-toolbar.mat-primary { /* Celuj w toolbar z kolorem 'primary' */
-    background-color: #115bee; /* Ustaw pożądane tło */
-    color: white; /* Upewnij się, że tekst będzie widoczny */
-  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
