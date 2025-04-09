@@ -50,7 +50,16 @@ export class CatApiService {
 removeFavourite(favouriteId: number | string ): Observable<any> { // API zwraca prosty obiekt { message: 'SUCCESS' }
     const headers = this.postDeleteHeaders();
     // W metodzie DELETE nie wysyłamy body w ten sposób, tylko ID w URL
-    return this.http.delete(`<span class="math-inline">\{this\.apiUrl\}/favourites/</span>{favouriteId}`, { headers });
+    // --- POPRAWIONA LINIA URL ---
+  // Używamy backticków (`) do interpolacji stringu
+  const url = `${this.apiUrl}/favourites/${favouriteId}`;
+  // -----------------------------
+
+  // Opcjonalnie: Dodaj log, aby sprawdzić URL przed wysłaniem
+  console.log(`CatApiService: Attempting DELETE request to URL: ${url}`);
+
+  // Użyj poprawnego url w metodzie delete
+  return this.http.delete(url, { headers });
 }
 
 // Metoda getFavourites() będzie potrzebna później dla FavouritesFeedComponent
@@ -61,4 +70,14 @@ getFavourites(): Observable<FavouriteResponse[]> {
 }
 // --- KONIEC NOWYCH METOD ---
   
+// --- NOWA METODA ---
+  /** Pobiera szczegóły pojedynczego obrazka po jego ID */
+  getImageById(imageId: string): Observable<CatImage> {
+    const headers = this.getHeaders();
+    const url = `${this.apiUrl}/images/${imageId}`;
+    console.log(`CatApiService: Getting image details from: ${url}`); // Log dla debugowania
+    return this.http.get<CatImage>(url, { headers });
+  }
+  // --- KONIEC NOWEJ METODY ---
+
 }

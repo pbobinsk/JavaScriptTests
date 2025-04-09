@@ -1,0 +1,20 @@
+<div class="feed-container">
+    <div *ngIf="isLoading" class="loading-indicator">
+      <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+      <p>Loading your favourites...</p>
+    </div>
+  
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+  
+    <div *ngIf="!isLoading && favouriteImages.length > 0" class="image-grid">
+      <app-image-card
+        *ngFor="let image of favouriteImages"
+        [imageData]="image"
+        (imageUnfavourited)="onImageUnfavourited($event)">
+        </app-image-card>
+    </div>
+  
+    <div *ngIf="!isLoading && favouriteImages.length === 0 && !error" class="no-images">
+      You haven't favourited any images yet. Go find some cute cats!
+    </div>
+  </div>

@@ -10,10 +10,14 @@ import { RandomFeedComponent } from './components/random-feed/random-feed.compon
 
 import { MatButtonModule } from '@angular/material/button'; // Importuj moduł przycisku
 
+// Zaimportuj FavouritesFeedComponent
+import { FavouritesFeedComponent } from './components/favourites-feed/favourites-feed.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  
   imports: [
     CommonModule,
     NavbarComponent, // 2. Dodaj NavbarComponent do imports
@@ -21,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button'; // Importuj moduł p
     RandomFeedComponent // Dodaj tutaj
     // FavouritesFeedComponent // Dodamy później
     ,MatButtonModule // <-- Dodaj tutaj
+    ,FavouritesFeedComponent // <-- Dodaj tutaj
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

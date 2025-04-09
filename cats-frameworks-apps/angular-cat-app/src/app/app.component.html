@@ -1,7 +1,7 @@
 <hr>
 <div>
   <button mat-flat-button color="primary">Test Primary</button>
-  <button mat-flat-button color="accent">Test Accent</button>
+  <button mat-flat-button color="error">Test Accent</button>
   <button mat-flat-button color="warn">Test Warn</button>
   <button mat-flat-button>Test Bez Koloru</button>
 </div>
@@ -14,6 +14,9 @@
 
 <main class="content-container">
   <app-random-feed *ngIf="!currentModeIsFavourites"></app-random-feed>
+
+  <app-favourites-feed *ngIf="currentModeIsFavourites"></app-favourites-feed>
+
 
   <p style="text-align: center; margin-top: 20px; font-style: italic;">
     Tryb: {{ currentModeIsFavourites ? 'Ulubione' : 'Losowe' }}

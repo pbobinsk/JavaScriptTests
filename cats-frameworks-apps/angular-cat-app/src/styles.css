@@ -1,8 +1,33 @@
-@import "@angular/material/prebuilt-themes/deeppurple-amber.css"; /* <-- Czy jest taka linia? */
+@import "@angular/material/prebuilt-themes/indigo-pink.css"; 
+/*
+
+deeppurple-amber.css
+indigo-pink.css
+pink-bluegrey.css
+purple-green.css
+*/
+
+ /* Dodaj to w src/styles.css w projekcie Angular */
+ mat-toolbar.mat-primary { /* Celuj w toolbar z kolorem 'primary' */
+  background-color: #115bee; /* Ustaw pożądane tło */
+  color: white; /* Upewnij się, że tekst będzie widoczny */
+}
+
+button.mdc-button.mat-error
+{
+  background-color: #26a93e; /* Ustaw pożądane tło */
+  color: rgb(175, 31, 31);
+}
+button.mat-error { /* Celuj w toolbar z kolorem 'primary' */
+  background-color: #26a93e; /* Ustaw pożądane tło */
+  color: rgb(175, 31, 31); /* Upewnij się, że tekst będzie widoczny */
+}
 
 
-
-
+mat-icon.mat-icon
+{
+  color: rgb(29, 201, 84);
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
