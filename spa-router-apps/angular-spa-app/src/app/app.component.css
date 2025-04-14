@@ -30,6 +30,12 @@ main {
   /* Jeśli miałeś inne style w <style> w App.vue, przenieś je tutaj,
      dostosowując selektory do struktury HTML w app.component.html */
 
+     #app {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
   /* NAVBAR */
   
   .navbar {
@@ -99,6 +105,15 @@ main {
     }
   }
 
+  /* MAIN CONTENT */
+
+.content {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
   
   /* FADE TRANSITION */
   
