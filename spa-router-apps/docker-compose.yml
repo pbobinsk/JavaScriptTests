@@ -1,0 +1,60 @@
+# Wersja składni Docker Compose
+version: '3.8'
+
+# Definicja serwisów (kontenerów)
+services:
+  # Serwis dla aplikacji Vue (serwer deweloperski Vite)
+  vue-app:
+    container_name: my-vue-app-dev
+    build:
+      context: ./vue-spa-app
+      dockerfile: Dockerfile # Upewnij się, że ten Dockerfile uruchamia serwer dev, np. przez 'npm run dev'
+    ports:
+      # Mapowanie: PORT_HOSTA:PORT_DEV_SERVERA_VITE
+      - "8081:5173" # Dostęp przez http://localhost:8081
+    # Opcjonalnie: Mapowanie woluminów dla Hot Reloading (odkomentuj, jeśli potrzebujesz)
+    # volumes:
+      # Mapuj kod źródłowy z hosta do kontenera
+      # - ./vue-app:/app
+      # Zapobiegaj nadpisaniu node_modules w kontenerze przez te z hosta
+      # - /app/node_modules
+    restart: unless-stopped
+    # Te opcje mogą być potrzebne, aby utrzymać kontener z serwerem dev uruchomiony
+    # stdin_open: true # Odpowiednik -i w docker run
+    # tty: true      # Odpowiednik -t w docker run
+
+  # Serwis dla aplikacji React (serwer deweloperski Vite)
+  react-app:
+    container_name: my-react-app-dev
+    build:
+      context: ./react-spa-app
+      dockerfile: Dockerfile # Upewnij się, że ten Dockerfile uruchamia serwer dev, np. przez 'npm run dev'
+    ports:
+      # Mapowanie: PORT_HOSTA:PORT_DEV_SERVERA_VITE
+      - "8082:5173" # Dostęp przez http://localhost:8082
+    # Opcjonalnie: Mapowanie woluminów dla Hot Reloading
+    # volumes:
+    #   - ./react-app:/app
+    #   - /app/node_modules
+    restart: unless-stopped
+    # stdin_open: true
+    # tty: true
+
+  # Serwis dla aplikacji Angular (serwer deweloperski Angular CLI)
+  angular-app:
+    container_name: my-angular-app-dev
+    build:
+      context: ./angular-spa-app
+      # Upewnij się, że Dockerfile uruchamia 'ng serve --host 0.0.0.0'
+      # Opcja '--host 0.0.0.0' jest ważna, aby serwer był dostępny z zewnątrz kontenera.
+      dockerfile: Dockerfile
+    ports:
+      # Mapowanie: PORT_HOSTA:PORT_DEV_SERVERA_ANGULAR
+      - "8083:4200" # Dostęp przez http://localhost:8083
+    # Opcjonalnie: Mapowanie woluminów dla Hot Reloading
+    # volumes:
+    #   - ./angular-app:/app
+    #   - /app/node_modules
+    restart: unless-stopped
+    # stdin_open: true
+    # tty: true
