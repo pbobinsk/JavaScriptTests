@@ -4,3 +4,5 @@ $env:ANDROID_HOME = "c:\Users\DELL\AppData\Local\Android\Sdk"
 cd android
 .\gradlew clean
 .\gradlew assembleDebug
+
+npx cap open android
