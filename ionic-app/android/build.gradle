@@ -13,6 +13,9 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+    ext {
+        javaVersion = JavaVersion.VERSION_17
+    }
 }
 
 apply from: "variables.gradle"
@@ -22,8 +25,23 @@ allprojects {
         google()
         mavenCentral()
     }
+    tasks.withType(JavaCompile).configureEach {
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+subprojects {
+    afterEvaluate {
+        if (plugins.hasPlugin('java')) {
+            tasks.withType(JavaCompile) {
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
+            }
+        }
+    }
 }
