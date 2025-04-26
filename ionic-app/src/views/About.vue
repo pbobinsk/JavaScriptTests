@@ -6,9 +6,13 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <h2>To jest strona About</h2>
-        <ion-button router-link="/home">Wróć do Home</ion-button>
+        <p>This is the About page.</p>
+        <ion-button router-link="/home">Back to Home</ion-button>
       </ion-content>
     </ion-page>
   </template>
+  
+  <script setup>
+  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
+  </script>
   

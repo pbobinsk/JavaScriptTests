@@ -4,11 +4,6 @@
   </ion-app>
 </template>
 
-<script setup>
-import { defineComponent } from 'vue';
-import { IonApp } from '@ionic/vue';
-
-defineComponent({
-  name: 'App'
-});
+<script setup lang="ts">
+import { IonApp, IonRouterOutlet } from '@ionic/vue';
 </script>
