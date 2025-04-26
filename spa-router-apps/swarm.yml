@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  vue-app:
+    image: my-vue-app:latest
+    ports:
+      - "8081:5173"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+
+  react-app:
+    image: my-react-app:latest
+    ports:
+      - "8082:5173"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+
+  angular-app:
+    image: my-angular-app:latest
+    ports:
+      - "8083:4200"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
