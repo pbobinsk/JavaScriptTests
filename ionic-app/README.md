@@ -5,4 +5,11 @@ cd android
 .\gradlew clean
 .\gradlew assembleDebug
 
+npm install
+npm run buid
+npx cap sync android
 npx cap open android
+
+
+npm i -g @ionic/cli
+ionic serve
