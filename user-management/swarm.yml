@@ -1,0 +1,64 @@
+# --- START OF FILE swarm.yml ---
+
+version: '3.8' # Wersja dla stack deploy
+
+services:
+  # Serwis aplikacji Node.js
+  app:
+    # Użyj obrazu wypchniętego do repozytorium
+    image: user-management-node:latest # <-- ZASTĄP SWOJĄ NAZWĄ!
+    environment:
+      # Przekaż URI MongoDB - używa nazwy serwisu 'mongo' jako hosta
+      - MONGODB_URI=mongodb://mongo:27017/usersdb
+      - PORT=3000
+      # Ustaw środowisko produkcyjne
+      - NODE_ENV=production
+    ports:
+      # Publikuj port 3000 na klastrze, kierując ruch do kontenerów app
+      - target: 3000  # Port wewnątrz kontenera
+        published: 3000 # Port na zewnątrz klastra
+        protocol: tcp
+        mode: ingress # Domyślny tryb routingu Swarm
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    deploy: # Konfiguracja specyficzna dla Swarm
+      replicas: 2 # Uruchom 2 instancje aplikacji dla wysokiej dostępności
+      update_config: # Jak przeprowadzać aktualizacje
+        parallelism: 1 # Aktualizuj po jednej replice na raz
+        delay: 10s # Czekaj 10s między aktualizacjami replik
+        order: stop-first # Zatrzymaj starą replikę przed uruchomieniem nowej
+      restart_policy: # Kiedy restartować kontener
+        condition: on-failure # Restartuj tylko w przypadku błędu
+
+  # Serwis bazy danych MongoDB
+  mongo:
+    image: mongo:6
+    volumes:
+      # Użyj nazwanego wolumenu dla trwałości danych
+      - mongo-data:/data/db
+    networks:
+      - app-network
+    deploy:
+      replicas: 1 # Zazwyczaj tylko jedna replika dla prostej bazy danych
+      placement:
+        # Opcjonalnie: Ogranicz uruchamianie bazy danych do węzłów managerów
+        # dla potencjalnie lepszego dostępu do storage lub kontroli
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
+
+# Zdefiniuj sieci (muszą być overlay dla komunikacji między węzłami w Swarm)
+networks:
+  app-network:
+    driver: overlay # Sterownik sieciowy dla Swarm
+
+# Zdefiniuj wolumeny
+volumes:
+  mongo-data:
+    # Można tu zdefiniować sterownik wolumenu, jeśli używasz
+    # zewnętrznego storage'u klastrowego
+    # driver: local # Domyślny sterownik (dane będą na węźle, gdzie uruchomiony jest kontener mongo)
+
+# --- END OF FILE swarm.yml ---

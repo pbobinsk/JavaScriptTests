@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/style.css">
+<a href="/">Home</a> 
+<h1>{{#if user}}Edit{{else}}Add{{/if}} User</h1>
+<form method="POST" action="{{#if user}}/users/update{{else}}/users{{/if}}">
+    {{#if user}}<input type="hidden" name="id" value="{{user.id}}">{{/if}}
+    <label>Name: <input name="name" value="{{user.name}}"></label><br>
+    <label>Email: <input name="email" value="{{user.email}}"></label><br>
+    <button type="submit">Save</button>
+</form>
