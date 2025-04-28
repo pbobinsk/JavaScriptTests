@@ -1,0 +1,55 @@
+# --- START OF FILE docker-compose.yml ---
+
+version: '3.8' # Użyj odpowiedniej wersji compose
+
+services:
+  # Serwis aplikacji Node.js
+  app:
+    build: . # Zbuduj obraz używając Dockerfile w bieżącym katalogu
+    container_name: node_app_dev # Opcjonalna nazwa kontenera
+    ports:
+      - "3000:3000" # Mapuj port 3000 hosta na port 3000 kontenera
+    environment:
+      # Przekaż URI MongoDB - używa nazwy serwisu 'mongo' jako hosta
+      - MONGODB_URI=mongodb://mongo:27017/usersdb
+      # Ustaw port wewnątrz kontenera (zgodnie z ENV w Dockerfile lub nadpisz)
+      - PORT=3000
+      # Opcjonalnie: Wskaż środowisko deweloperskie
+      - NODE_ENV=development
+    volumes:
+      # Zamontuj kod źródłowy dla hot-reloading (jeśli używasz nodemon)
+      # Uwaga: nadpisuje kod skopiowany w Dockerfile
+      - .:/usr/src/app
+      # Zapobiegaj nadpisywaniu node_modules z hosta (ważne, jeśli host ma inny system)
+      - /usr/src/app/node_modules
+    # Uruchomienie z nodemon dla hot-reloading w dewelopmencie
+    # Upewnij się, że nodemon jest w devDependencies
+    command: npm run dev
+    depends_on:
+      - mongo # Upewnij się, że serwis mongo uruchomi się przed app
+    networks:
+      - app-network # Użyj zdefiniowanej sieci
+
+  # Serwis bazy danych MongoDB
+  mongo:
+    image: mongo:6 # Użyj oficjalnego obrazu MongoDB (np. wersja 6)
+    container_name: mongo_db_dev # Opcjonalna nazwa kontenera
+    ports:
+      # Opcjonalnie: Mapuj port MongoDB na hosta, aby móc się połączyć z zewnątrz (np. przez Compass)
+      - "27017:27017"
+    volumes:
+      # Użyj nazwanego wolumenu, aby dane MongoDB były trwałe
+      - mongo-data:/data/db
+    networks:
+      - app-network # Użyj zdefiniowanej sieci
+
+# Zdefiniuj sieci
+networks:
+  app-network:
+    driver: bridge # Domyślny sterownik sieciowy dla compose
+
+# Zdefiniuj nazwane wolumeny
+volumes:
+  mongo-data: # Wolumen do przechowywania danych MongoDB
+
+# --- END OF FILE docker-compose.yml ---

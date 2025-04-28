@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/style.css">
+<h1>User List</h1>
+<a href="/">Home</a> |
+<a href="/users/new">➕ Add User</a>
+<table>
+    <tr><th>Name</th><th>Email</th><th>Actions</th></tr>
+    {{#each users}}
+    <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.email}}</td>
+        <td>
+            <a href="/users/edit/{{this.id}}">✏️</a>
+            <a href="/users/delete/{{this.id}}">🗑️</a>
+        </td>
+    </tr>
+    {{/each}}
+</table>

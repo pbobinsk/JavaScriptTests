@@ -1,0 +1,17 @@
+body {
+    font-family: sans-serif;
+    margin: 2em;
+    background: #eef;
+}
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+th, td {
+    border: 1px solid #bbb;
+    padding: 8px;
+}
+a {
+    margin-right: 8px;
+    text-decoration: none;
+}
