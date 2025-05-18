@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 interface Item {
   id: number;
@@ -13,7 +13,14 @@ const items: Item[] = [
   { id: 4, name: 'Przedmiot D (App Router)', description: 'Dodatkowy przedmiot D' },
 ];
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
+  const sortBy = searchParams.get('sortBy');
+
+  if (sortBy) {
+    console.log(`Sortowanie według: ${sortBy}`);
+    // Tutaj logika sortowania `items` na podstawie `sortBy`
+  }
   // W przyszłości można tu dodać logikę, np. opóźnienie:
   // await new Promise(resolve => setTimeout(resolve, 500));
   return NextResponse.json(items);
