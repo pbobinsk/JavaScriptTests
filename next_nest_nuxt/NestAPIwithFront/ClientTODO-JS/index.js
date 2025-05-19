@@ -36,8 +36,8 @@ const count = root.querySelector('.todos-count');
 const clear = root.querySelector('.todos-clear');
 const form = document.forms.todos;
 const input = form.elements.todo;
-//const apiUrl = 'https://nest-todo-api-sage.vercel.app/';
- const apiUrl = 'http://localhost:3000/';
+const apiUrl = 'https://nest-todo-api-sage.vercel.app/';
+//const apiUrl = 'http://localhost:3000/';
 
 
 // functions
@@ -210,8 +210,8 @@ function init() {
     .then((response) => response.json())
     .then((todos) => renderTodos(todos))
     .catch(error => {
-      console.error("Błąd podczas inicjalizacji aplikacji:", error);
-      showApiError("Błąd podczas inicjalizacji aplikacji:");
+      console.error("Błąd podczas inicjalizacji aplikacji:", error.message);
+      showApiError("Błąd podczas inicjalizacji aplikacji: "+error.message+" ("+apiUrl+")");
     } );
     
   // Add Todo
