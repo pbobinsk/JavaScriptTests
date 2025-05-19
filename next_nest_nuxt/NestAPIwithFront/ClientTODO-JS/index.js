@@ -4,6 +4,10 @@
 
 const app = document.getElementById('app');
 
+    const apiStatusDiv = document.getElementById('api-status-message');
+    const apiStatusIcon = apiStatusDiv.querySelector('.icon');
+    const apiStatusMessageSpan = apiStatusDiv.querySelector('.message');
+
 app.innerHTML = `
   <div class="todos">
     <div class="todos-header">
@@ -32,11 +36,15 @@ const count = root.querySelector('.todos-count');
 const clear = root.querySelector('.todos-clear');
 const form = document.forms.todos;
 const input = form.elements.todo;
+//const apiUrl = 'https://nest-todo-api-sage.vercel.app/';
+ const apiUrl = 'http://localhost:3000/';
+
 
 // functions
 const api = (() => {
   function makeApiRequest(path, method, bodyObject) {
-    return fetch('http://localhost:3000/' + path, {
+    return fetch(apiUrl + path, {
+
       method,
       headers: {
         'Content-Type': 'application/json',
@@ -195,11 +203,17 @@ function clearCompleteTodos() {
 
 // init
 function init() {
+
+  hideApiError();
   api
     .findAll()
     .then((response) => response.json())
-    .then((todos) => renderTodos(todos));
-
+    .then((todos) => renderTodos(todos))
+    .catch(error => {
+      console.error("Błąd podczas inicjalizacji aplikacji:", error);
+      showApiError("Błąd podczas inicjalizacji aplikacji:");
+    } );
+    
   // Add Todo
   form.addEventListener('submit', addTodo);
   // Update Todo
@@ -212,4 +226,20 @@ function init() {
   clear.addEventListener('click', clearCompleteTodos);
 }
 
-init();
+
+  function showApiError(message, showIcon = true) {
+      apiStatusMessageSpan.textContent = message;
+      apiStatusDiv.classList.add('error');
+      if (showIcon) {
+          apiStatusIcon.style.display = 'inline';
+      } else {
+          apiStatusIcon.style.display = 'none';
+      }
+  }
+
+  function hideApiError() {
+      apiStatusDiv.classList.remove('error');
+      apiStatusMessageSpan.textContent = '';
+  }
+
+  init();

@@ -3,6 +3,35 @@
   <head>
     <title>Ultimate Courses</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+        <style>
+        /* Dodatkowe style dla komunikatu o błędzie API */
+        .api-status {
+            display: none; /* Ukryty domyślnie */
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .api-status.error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            display: block; /* Pokaż, gdy jest błąd */
+        }
+        .api-status.error .icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        /* Prosta ikona "offline" (możesz użyć SVG, FontAwesome itp. dla lepszych ikon) */
+        /* Dla prostoty użyjemy tekstu/znaku unicode */
+        .icon-offline::before {
+            content: "⚠️"; /* lub inny znak unicode, np. 🔌 🛑 */
+            /* Możesz też użyć SVG: */
+            /* content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" ...></svg>'); */
+        }
+    </style>
   </head>
   <body>
     <header class="header">
@@ -11,6 +40,13 @@
         <p class="logo-name">Ultimate Courses<span>&trade;</span></p>
       </div>
     </header>
+        <!-- Element do wyświetlania statusu API -->
+        <div id="api-status-message" class="api-status">
+            <span class="icon icon-offline"></span>
+            <span class="message"></span>
+        </div>
+
+
     <div id="app"></div>
     <script src="index.js" type="text/javascript"></script>
   </body>
