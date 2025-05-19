@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemsListDiv = document.getElementById('items-list');
     const addItemForm = document.getElementById('addItemForm');
     const errorMessageDiv = document.getElementById('error-message');
-    const apiUrl = 'http://localhost:3000/items'; // Upewnij się, że port jest poprawny
-
+    // const apiUrl = 'http://localhost:3000/items'; // Upewnij się, że port jest poprawny
+    const apiUrl = 'https://nest-complex-api.vercel.app/items';
     // Funkcja do wyświetlania błędów
     function displayError(message) {
         errorMessageDiv.textContent = message;
