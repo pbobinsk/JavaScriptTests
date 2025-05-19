@@ -16,7 +16,7 @@ async function getItems(): Promise<Item[]> {
   // Dla dewelopmentu, Next.js automatycznie wie, gdzie jest jego własne API.
   // W przypadku zewnętrznego API, użyj pełnego URL.
   // Użycie `process.env.NEXT_PUBLIC_VERCEL_URL` lub `localhost` dla developmentu.
-  const apiUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const apiUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:8080';
 
   try {
     // Opcja cache: 'no-store' aby dane były zawsze świeże przy każdym żądaniu (jak getServerSideProps)
