@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   description: 'Lista przedmiotów pobrana z naszego API.',
 };
 
+export const dynamic = 'force-dynamic';
+
 interface Item {
   id: number;
   name: string;
