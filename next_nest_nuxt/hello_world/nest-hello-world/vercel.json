@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/main.ts", // Lub Twój główny plik wejściowy, jeśli jest inny
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)", // Przekieruj wszystkie zapytania do Twojej funkcji
+      "dest": "src/main.ts" // Lub Twój główny plik wejściowy
+    }
+  ]
+}
