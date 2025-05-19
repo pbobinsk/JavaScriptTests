@@ -19,6 +19,7 @@ async function getItems(): Promise<Item[]> {
   // W przypadku zewnętrznego API, użyj pełnego URL.
   // Użycie `process.env.NEXT_PUBLIC_VERCEL_URL` lub `localhost` dla developmentu.
   const apiUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:8080';
+  
   console.log('Używany apiUrl do fetch:', apiUrl); // <--- Dodaj ten log
 
   try {
