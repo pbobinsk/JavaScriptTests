@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common'; 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -10,6 +10,10 @@ async function bootstrap() {
     origin: true, // Możesz bardziej precyzyjnie określić origin, np. 'http://localhost:5500' (port Live Servera)
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
+  });
+
+  app.enableVersioning({
+    type: VersioningType.URI, // np. /v1/items, /v2/items
   });
 
   // Globalny pipe dla walidacji DTO
