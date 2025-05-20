@@ -1,8 +1,6 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { useState } from 'react';
-
 
 function Counter() {
   const [count, setCount] = useState(0);
