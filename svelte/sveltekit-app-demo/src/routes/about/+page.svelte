@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { ref } from 'vue'; // W Svelte używamy 'svelte' a nie 'vue'
-                           // Poprawka: svelte nie używa ref z vue, tylko własne mechanizmy
+  
   let count = 0; // W Svelte, zmienne let są automatycznie reaktywne w skryptach komponentów
   const increment = () => count++;
   const decrement = () => count--;
