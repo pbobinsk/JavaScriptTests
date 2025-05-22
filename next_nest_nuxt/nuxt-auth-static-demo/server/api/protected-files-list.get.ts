@@ -1,0 +1,163 @@
+// server/api/protected-files-list.get.ts
+import { defineEventHandler, getCookie, createError } from 'h3';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+interface FileEntry {
+  name: string;        // Nazwa pliku (np. "secret-page.html" lub "subfolder/another.html")
+  type: 'file';        // Będziemy listować tylko pliki
+  path: string;        // Względna ścieżka od baseDir, używana do budowania URL API
+  displayName: string; // Nazwa do wyświetlenia, może zawierać ścieżkę dla zagnieżdżonych plików
+}
+
+// Zaktualizowany interfejs, aby mógł reprezentować katalogi z dziećmi
+interface FileSystemEntry {
+  name: string;
+  type: 'file' | 'directory';
+  path: string; // Względna ścieżka od baseDir, używana do budowania URL API dla plików
+  displayName: string; // Nazwa do wyświetlenia
+  children?: FileSystemEntry[]; // Dla katalogów, lista dzieci
+}
+
+// Rekursywna funkcja pomocnicza do listowania plików HTML
+async function listHtmlFilesRecursive(
+  directoryPath: string,    // Aktualnie przeszukiwany katalog
+  baseDirectory: string,    // Główny katalog, od którego budujemy ścieżki względne
+  currentRelativePath: string = '' // Ścieżka względna od baseDirectory do directoryPath
+): Promise<FileEntry[]> {
+  const entries: FileEntry[] = [];
+  const items = await fs.readdir(directoryPath, { withFileTypes: true });
+
+  for (const item of items) {
+    const itemName = item.name;
+    // Pełna ścieżka systemowa do aktualnego elementu
+    const itemFullPath = path.join(directoryPath, itemName);
+    // Ścieżka względna od baseDirectory, używana do linków i displayName
+    const itemRelativePath = path.join(currentRelativePath, itemName).replace(/\\/g, '/');
+
+    if (item.isDirectory()) {
+      // WAŻNE: Tutaj decydujemy, czy wchodzić do podkatalogów
+      // Możemy dodać warunek, np. aby ignorować katalog 'images'
+      if (itemName.toLowerCase() === 'images') { // Ignoruj katalog 'images'
+        continue; // Przejdź do następnego elementu
+      }
+      // Można też dodać inne ignorowane katalogi:
+      // const ignoredDirs = ['images', 'temp', '_internal'];
+      // if (ignoredDirs.includes(itemName.toLowerCase())) {
+      //   continue;
+      // }
+
+      // Rekursywnie listuj pliki w podkatalogu
+      entries.push(...await listHtmlFilesRecursive(itemFullPath, baseDirectory, itemRelativePath));
+    } else if (item.isFile()) {
+      // Sprawdź, czy plik ma rozszerzenie .html
+      if (path.extname(itemName).toLowerCase() === '.html') {
+        entries.push({
+          name: itemName, // Sama nazwa pliku
+          type: 'file',
+          path: itemRelativePath, // np. "secret-page.html" lub "subfolder/another.html"
+          displayName: itemRelativePath // Dla zagnieżdżonych plików, displayName pokaże pełną ścieżkę
+        });
+      }
+    }
+  }
+  return entries;
+}
+
+
+async function listDirectoryRecursive(
+  directoryPath: string,
+  baseDirectory: string,
+  currentRelativePath: string = ''
+): Promise<FileSystemEntry[]> {
+  const entries: FileSystemEntry[] = [];
+  let items;
+  try {
+    items = await fs.readdir(directoryPath, { withFileTypes: true });
+  } catch (error: any) {
+    // Jeśli nie można odczytać katalogu (np. brak uprawnień, nie istnieje), zwróć pustą tablicę lub obsłuż błąd
+    console.warn(`[protected-files-list] Nie można odczytać katalogu: ${directoryPath}`, error.message);
+    return [];
+  }
+
+
+  for (const item of items) {
+    const itemName = item.name;
+    const itemFullPath = path.join(directoryPath, itemName);
+    const itemRelativePath = path.join(currentRelativePath, itemName).replace(/\\/g, '/');
+
+    if (item.isDirectory()) {
+      // Ignoruj katalog 'images' i jego zawartość
+      if (itemName.toLowerCase() === 'images') {
+        continue;
+      }
+
+      // Rekursywnie pobierz dzieci dla tego katalogu
+      const children = await listDirectoryRecursive(itemFullPath, baseDirectory, itemRelativePath);
+      
+      // Dodaj katalog do listy tylko jeśli zawiera jakiekolwiek pliki HTML (bezpośrednio lub w podkatalogach)
+      // lub jeśli chcemy zawsze pokazywać strukturę katalogów, nawet pustych (poza images)
+      // Dla uproszczenia, na razie dodajemy katalog, a filtrowanie można dodać później, jeśli potrzebne.
+      // Jeśli chcesz pokazywać tylko katalogi, które ostatecznie prowadzą do plików HTML,
+      // musiałbyś sprawdzić, czy `children` zawiera jakiekolwiek pliki HTML.
+      if (children.length > 0) { // Dodaj katalog, jeśli ma jakieś dzieci (pliki HTML lub inne podkatalogi z plikami HTML)
+        entries.push({
+          name: itemName,
+          type: 'directory',
+          path: itemRelativePath, // Ścieżka do katalogu
+          displayName: itemName,  // Dla katalogów zwykle tylko nazwa
+          children: children,
+        });
+      } else {
+          // Opcjonalnie: można dodać pusty katalog, jeśli chcesz pokazać wszystkie (poza images)
+          // entries.push({ name: itemName, type: 'directory', path: itemRelativePath, displayName: itemName, children: [] });
+          console.log(`[protected-files-list] Pomijanie pustego (lub zawierającego tylko nie-HTML) katalogu: ${itemRelativePath}`);
+      }
+
+    } else if (item.isFile()) {
+      if (path.extname(itemName).toLowerCase() === '.html') {
+        entries.push({
+          name: itemName,
+          type: 'file',
+          path: itemRelativePath,
+          displayName: itemName, // Dla plików, nazwa to zazwyczaj wystarczający displayName
+        });
+      }
+    }
+  }
+  // Sortuj wpisy: najpierw katalogi, potem pliki (alfabetycznie w ramach grup)
+  return entries.sort((a, b) => {
+    if (a.type === 'directory' && b.type === 'file') return -1;
+    if (a.type === 'file' && b.type === 'directory') return 1;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+
+export default defineEventHandler(async (event) => {
+  // 1. Sprawdź autoryzację (bez zmian)
+  const userSessionCookie = getCookie(event, 'user-session');
+  
+  if (!userSessionCookie) { // <--- SPRAWDZENIE CZY ISTNIEJE (NAJPROSTSZE)
+    console.log('[protected-files-list] No session cookie, access denied.');
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Brak sesji użytkownika.' });
+  }
+  try {
+    const parsedSession = JSON.parse(userSessionCookie);
+    if (!parsedSession || !parsedSession.login) throw new Error('Invalid session');
+  } catch (e) {
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
+  }
+
+  // 2. Listuj pliki HTML z katalogu server/protected-assets/
+  const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
+
+  try {
+    // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
+    const htmlFiles = await listDirectoryRecursive(baseDir, baseDir);
+   return htmlFiles;
+  } catch (error) {
+    console.error('[protected-files-list] Error listing HTML files:', error);
+    throw createError({ statusCode: 500, statusMessage: 'Internal Server Error', message: 'Nie udało się wylistować plików HTML.' });
+  }
+});
