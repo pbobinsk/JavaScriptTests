@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Signal acquisition and filtering",
+    "type": "directory",
+    "path": "Signal acquisition and filtering",
+    "displayName": "Signal acquisition and filtering",
+    "children": [
+      {
+        "name": "Signal acquisition and filtering.html",
+        "type": "file",
+        "path": "Signal acquisition and filtering/Signal acquisition and filtering.html",
+        "displayName": "Signal acquisition and filtering.html"
+      }
+    ]
+  },
+  {
+    "name": "secret.html",
+    "type": "file",
+    "path": "secret.html",
+    "displayName": "secret.html"
+  }
+]

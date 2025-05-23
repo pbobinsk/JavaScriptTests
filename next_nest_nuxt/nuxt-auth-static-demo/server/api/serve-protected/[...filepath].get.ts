@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
 
   requestedPath = decodedPath;
   
-  const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
+  const baseDir = path.resolve(process.cwd(), 'public/protected-content');
   // const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
   const filePath = path.join(baseDir, requestedPath);
 

@@ -3,6 +3,8 @@ import { defineEventHandler, getCookie, createError } from 'h3';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+import manifestData from '~/server/data/public-files-manifest.json';
+
 interface FileEntry {
   name: string;        // Nazwa pliku (np. "secret-page.html" lub "subfolder/another.html")
   type: 'file';        // Będziemy listować tylko pliki
@@ -152,12 +154,36 @@ export default defineEventHandler(async (event) => {
   // 2. Listuj pliki HTML z katalogu server/protected-assets/
   const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
 
+  // try {
+  //   // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
+  //   const htmlFiles = await listDirectoryRecursive(baseDir, baseDir);
+  //  return htmlFiles;
+  // } catch (error) {
+  //   console.error('[protected-files-list] Error listing HTML files:', error);
+  //   throw createError({ statusCode: 500, statusMessage: 'Internal Server Error', message: 'Nie udało się wylistować plików HTML.' });
+  // }
+
+
   try {
-    // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
-    const htmlFiles = await listDirectoryRecursive(baseDir, baseDir);
-   return htmlFiles;
-  } catch (error) {
-    console.error('[protected-files-list] Error listing HTML files:', error);
-    throw createError({ statusCode: 500, statusMessage: 'Internal Server Error', message: 'Nie udało się wylistować plików HTML.' });
+    // Opcja A: Bezpośrednie zwrócenie zaimportowanych danych (preferowane, jeśli działa)
+    if (manifestData) {
+      console.log('[public-files-list] Zwracanie danych z zaimportowanego manifestu JSON.');
+      return manifestData as FileSystemEntry[]; // Rzutowanie typu dla pewności
+    } else {
+      // To nie powinno się zdarzyć, jeśli import się powiedzie
+      throw new Error('Manifest data could not be imported.');
+    }
+    } catch (error: any) {
+    console.error('[public-files-list] Błąd podczas odczytu lub parsowania manifestu plików:', error);
+    // Zwróć bardziej szczegółowy błąd, jeśli to możliwe
+    const errorMessage = error.code === 'ENOENT' 
+        ? 'Plik manifestu nie został znaleziony. Upewnij się, że skrypt generujący został uruchomiony.'
+        : 'Nie udało się załadować listy plików z manifestu.';
+    throw createError({ 
+        statusCode: 500, 
+        statusMessage: 'Internal Server Error', 
+        message: errorMessage,
+        cause: error // Dodaj oryginalny błąd do przyczyny dla lepszego debugowania
+    });
   }
 });
