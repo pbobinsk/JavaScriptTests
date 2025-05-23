@@ -102,60 +102,6 @@ async function listDirectoryRecursive(
   });
 }
 
-// Przykład użycia (zakładając, że reszta skryptu `generate-tree-manifest.js` jest podobna):
-// async function generateTreeManifest() {
-//   const projectRootDir = path.resolve(__dirname, '..');
-//   const publicDirRelative = 'public';
-//   const protectedSubDirRelative = 'protected-content';
-//   const targetDirToScan = path.join(projectRootDir, publicDirRelative, protectedSubDirRelative);
-//   const manifestOutputPath = path.resolve(projectRootDir, 'server', 'data', 'public-files-tree-manifest.json');
-
-//   console.log(`Rozpoczynanie generowania drzewiastego manifestu plików z: ${targetDirToScan}`);
-  
-//   if (!fs.existsSync(targetDirToScan)) {
-//     // ... obsługa braku katalogu ...
-//     return;
-//   }
-
-//   // Wywołanie funkcji listującej. `baseDirectory` może być `targetDirToScan` lub `projectRootDir`
-//   // w zależności od tego, jak chcesz interpretować ścieżki.
-//   // Dla budowania `itemRelativePath` w obecnej logice, `baseDirectory` nie jest kluczowe.
-//   const fileTree = await listDirectoryRecursive(targetDirToScan, targetDirToScan); 
-  
-//   await fs.ensureDir(path.dirname(manifestOutputPath));
-//   await fs.writeJson(manifestOutputPath, fileTree, { spaces: 2 });
-//   console.log(`Drzewiasty manifest plików zapisany w: ${manifestOutputPath}`);
-// }
-
-// generateTreeManifest().catch(console.error);
-
-// async function listDirectoryRecursive(fullDirPath, relativePathAccumulator = '') {
-//   const entries = [];
-//   try {
-//     const items = await fs.readdir(fullDirPath, { withFileTypes: true });
-//     for (const item of items) {
-//       const itemName = item.name;
-//       const itemPublicPath = path.join(protectedSubDir, relativePathAccumulator, itemName).replace(/\\/g, '/');
-
-//       if (item.isDirectory()) {
-//         entries.push({ name: itemName, type: 'directory', publicPath: itemPublicPath });
-//         // Jeśli chcesz rekursywnie, odkomentuj i dostosuj:
-//         entries.push(...await listDirectoryRecursive(path.join(fullDirPath, itemName), path.join(relativePathAccumulator, itemName)));
-//       } else if (item.isFile()) {
-//         entries.push({ name: itemName, type: 'file', publicPath: itemPublicPath });
-//       }
-//     }
-//   } catch (error) {
-//     if (error.code === 'ENOENT') {
-//       console.warn(`Katalog do wylistowania nie istnieje: ${fullDirPath}`);
-//       return []; // Zwróć pustą tablicę, jeśli katalog nie istnieje
-//     }
-//     throw error; // Rzuć inne błędy dalej
-//   }
-//   return entries;
-// }
-
-
 
 async function generateManifest() {
   console.log(`Listowanie plików z: ${targetDirToList}`);
@@ -168,10 +114,6 @@ async function generateManifest() {
   console.log(`Manifest plików zapisany w: ${manifestOutputPath}`);
 }
 
-console.log('Aktualny katalog skryptu (__dirname):', __dirname);
-console.log('Rozwiązana ścieżka do publicDir:', publicDir);
-console.log('Rozwiązana ścieżka do targetDirToList:', targetDirToList);
-console.log('Rozwiązana ścieżka do manifestOutputPath:', manifestOutputPath);
 
 generateManifest().catch(error => {
   console.error("Błąd podczas generowania manifestu plików:", error);

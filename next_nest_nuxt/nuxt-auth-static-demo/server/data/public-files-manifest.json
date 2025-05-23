@@ -14,9 +14,29 @@
     ]
   },
   {
+    "name": "testowy",
+    "type": "directory",
+    "path": "testowy",
+    "displayName": "testowy",
+    "children": [
+      {
+        "name": "secret.html",
+        "type": "file",
+        "path": "testowy/secret.html",
+        "displayName": "secret.html"
+      }
+    ]
+  },
+  {
     "name": "secret.html",
     "type": "file",
     "path": "secret.html",
     "displayName": "secret.html"
+  },
+  {
+    "name": "secret2.html",
+    "type": "file",
+    "path": "secret2.html",
+    "displayName": "secret2.html"
   }
 ]
