@@ -150,7 +150,7 @@ export default defineEventHandler(async (event) => {
   }
 
   // 2. Listuj pliki HTML z katalogu server/protected-assets/
-  const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
+  const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
 
   try {
     // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
