@@ -55,8 +55,9 @@ export default defineEventHandler(async (event) => {
   }
 
   requestedPath = decodedPath;
-
-  const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
+  
+  const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
+  // const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
   const filePath = path.join(baseDir, requestedPath);
 
   if (!filePath.startsWith(baseDir + path.sep) && filePath !== baseDir) { // path.sep dla separatora systemowego
