@@ -5,6 +5,7 @@ import { type H3Event } from 'h3' // Typ dla eventu serwerowego Nitro
 interface User {
   id: string;
   login: string;
+  roles?: string[]; // Dodane role
 }
 
 export const useAuth = () => {
