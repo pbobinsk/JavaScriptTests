@@ -87,6 +87,7 @@ async function listDirectoryRecursive(
           name: itemName,
           type: 'file',
           path: itemRelativePath, // Ścieżka względna pliku
+          url: protectedSubDir+'/'+itemRelativePath,
           displayName: itemName,  // Możesz tu dodać logikę do formatowania nazwy wyświetlanej
                                   // np. usunięcie rozszerzenia .html
         });

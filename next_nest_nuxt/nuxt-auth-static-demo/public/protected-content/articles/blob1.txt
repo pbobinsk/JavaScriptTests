@@ -1,6 +1,5 @@
 <html>
     <body>
         <h1>Dupa</h1>
-        <img src="./images/succ-aprox.png">
     </body>
 </html>

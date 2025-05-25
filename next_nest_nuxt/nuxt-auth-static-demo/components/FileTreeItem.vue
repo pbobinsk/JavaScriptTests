@@ -6,8 +6,9 @@
       </span>
       <span v-else class="icon">📄</span> <!-- Ikona dla pliku -->
 
-      <!-- <a v-if="entry.type === 'file'" :href="`/api/serve-protected/${entry.path}`" target="_blank" class="file-link"> -->
-      <a v-if="entry.type === 'file'" :href="`/protected-content/${entry.path}`" target="_blank" class="file-link">
+      <a v-if="entry.type === 'file'" :href="`/api/serve-protected/${entry.path}`" target="_blank" class="file-link">
+      <!-- <a v-if="entry.type === 'file'" :href="`/protected-content/${entry.path}`" target="_blank" class="file-link"> -->
+      <!-- <a v-if="entry.type === 'file'" :href="`${entry.url}`" target="_blank" class="file-link"> -->
         {{ entry.displayName }}
       </a>
       <span v-else @click="toggle" class="directory-name">
@@ -32,6 +33,7 @@ interface FileSystemEntry {
   type: 'file' | 'directory';
   path: string;
   displayName: string;
+  url?: string;
   children?: FileSystemEntry[];
 }
 

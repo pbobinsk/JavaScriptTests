@@ -1,5 +1,20 @@
 [
   {
+    "name": "articles",
+    "type": "directory",
+    "path": "articles",
+    "displayName": "articles",
+    "children": [
+      {
+        "name": "Signal acquisition and filtering.html",
+        "type": "file",
+        "path": "articles/Signal acquisition and filtering.html",
+        "url": "protected-content/articles/Signal acquisition and filtering.html",
+        "displayName": "Signal acquisition and filtering.html"
+      }
+    ]
+  },
+  {
     "name": "Signal acquisition and filtering",
     "type": "directory",
     "path": "Signal acquisition and filtering",
@@ -9,6 +24,7 @@
         "name": "Signal acquisition and filtering.html",
         "type": "file",
         "path": "Signal acquisition and filtering/Signal acquisition and filtering.html",
+        "url": "protected-content/Signal acquisition and filtering/Signal acquisition and filtering.html",
         "displayName": "Signal acquisition and filtering.html"
       }
     ]
@@ -23,6 +39,22 @@
         "name": "secret.html",
         "type": "file",
         "path": "testowy/secret.html",
+        "url": "protected-content/testowy/secret.html",
+        "displayName": "secret.html"
+      }
+    ]
+  },
+  {
+    "name": "testowy2",
+    "type": "directory",
+    "path": "testowy2",
+    "displayName": "testowy2",
+    "children": [
+      {
+        "name": "secret.html",
+        "type": "file",
+        "path": "testowy2/secret.html",
+        "url": "protected-content/testowy2/secret.html",
         "displayName": "secret.html"
       }
     ]
@@ -31,12 +63,14 @@
     "name": "secret.html",
     "type": "file",
     "path": "secret.html",
+    "url": "protected-content/secret.html",
     "displayName": "secret.html"
   },
   {
     "name": "secret2.html",
     "type": "file",
     "path": "secret2.html",
+    "url": "protected-content/secret2.html",
     "displayName": "secret2.html"
   }
 ]

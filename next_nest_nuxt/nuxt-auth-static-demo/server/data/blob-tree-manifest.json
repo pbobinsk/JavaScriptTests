@@ -1,0 +1,375 @@
+[
+  {
+    "name": "articles",
+    "displayName": "articles",
+    "type": "directory",
+    "path": "articles/",
+    "children": [
+      {
+        "name": "blob.txt",
+        "displayName": "blob.txt",
+        "type": "file",
+        "path": "articles/blob.txt",
+        "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/articles/blob.txt",
+        "size": 12,
+        "uploadedAt": "2025-05-24T11:27:45.000Z"
+      },
+      {
+        "name": "blob1.txt",
+        "displayName": "blob1.txt",
+        "type": "file",
+        "path": "articles/blob1.txt",
+        "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/articles/blob1.txt",
+        "size": 14,
+        "uploadedAt": "2025-05-25T10:18:39.000Z"
+      },
+      {
+        "name": "Signal acquisition and filtering.html",
+        "displayName": "Signal acquisition and filtering.html",
+        "type": "file",
+        "path": "articles/Signal acquisition and filtering.html",
+        "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/articles/Signal%20acquisition%20and%20filtering.html",
+        "size": 1832002,
+        "uploadedAt": "2025-05-25T09:55:29.000Z"
+      }
+    ]
+  },
+  {
+    "name": "images",
+    "displayName": "images",
+    "type": "directory",
+    "path": "images/",
+    "children": [
+      {
+        "name": "succ-aprox.png",
+        "displayName": "succ-aprox.png",
+        "type": "file",
+        "path": "images/succ-aprox.png",
+        "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/images/succ-aprox.png",
+        "size": 13992,
+        "uploadedAt": "2025-05-25T13:12:33.000Z"
+      }
+    ]
+  },
+  {
+    "name": "MM",
+    "displayName": "MM",
+    "type": "directory",
+    "path": "MM/",
+    "children": [
+      {
+        "name": "Signal acquisition and filtering",
+        "displayName": "Signal acquisition and filtering",
+        "type": "directory",
+        "path": "MM/Signal acquisition and filtering/",
+        "children": [
+          {
+            "name": "images",
+            "displayName": "images",
+            "type": "directory",
+            "path": "MM/Signal acquisition and filtering/images/",
+            "children": [
+              {
+                "name": "active.png",
+                "displayName": "active.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/active.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/active.png",
+                "size": 34199,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "bessel.png",
+                "displayName": "bessel.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/bessel.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/bessel.png",
+                "size": 29633,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "butterworth.png",
+                "displayName": "butterworth.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/butterworth.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/butterworth.png",
+                "size": 23533,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "capacitive.png",
+                "displayName": "capacitive.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/capacitive.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/capacitive.png",
+                "size": 32420,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "chebyshev.png",
+                "displayName": "chebyshev.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/chebyshev.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/chebyshev.png",
+                "size": 22178,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "curve.png",
+                "displayName": "curve.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/curve.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/curve.png",
+                "size": 12324,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "daq-diagram.png",
+                "displayName": "daq-diagram.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/daq-diagram.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/daq-diagram.png",
+                "size": 454354,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "digital.png",
+                "displayName": "digital.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/digital.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/digital.png",
+                "size": 22226,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "galvanic.png",
+                "displayName": "galvanic.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/galvanic.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/galvanic.png",
+                "size": 30547,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "highpass.png",
+                "displayName": "highpass.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/highpass.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/highpass.png",
+                "size": 10114,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "inst-amp.png",
+                "displayName": "inst-amp.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/inst-amp.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/inst-amp.png",
+                "size": 12400,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "integrator.png",
+                "displayName": "integrator.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/integrator.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/integrator.png",
+                "size": 16422,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "ipts.png",
+                "displayName": "ipts.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/ipts.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/ipts.png",
+                "size": 60049,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "nist.png",
+                "displayName": "nist.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/nist.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/nist.png",
+                "size": 88818,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "op-amps.png",
+                "displayName": "op-amps.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/op-amps.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/op-amps.png",
+                "size": 23934,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "optical.png",
+                "displayName": "optical.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/optical.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/optical.png",
+                "size": 33741,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "rc.png",
+                "displayName": "rc.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/rc.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/rc.png",
+                "size": 6864,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "seeback.png",
+                "displayName": "seeback.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/seeback.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/seeback.png",
+                "size": 31013,
+                "uploadedAt": "2025-05-25T13:54:50.000Z"
+              },
+              {
+                "name": "sigma_delta_2.png",
+                "displayName": "sigma_delta_2.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/sigma_delta_2.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/sigma_delta_2.png",
+                "size": 19871,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "sigma_delta.png",
+                "displayName": "sigma_delta.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/sigma_delta.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/sigma_delta.png",
+                "size": 21049,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "sigma-delta_2.png",
+                "displayName": "sigma-delta_2.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/sigma-delta_2.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/sigma-delta_2.png",
+                "size": 19871,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "sigma-delta.png",
+                "displayName": "sigma-delta.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/sigma-delta.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/sigma-delta.png",
+                "size": 21049,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "succ_aprox.png",
+                "displayName": "succ_aprox.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/succ_aprox.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/succ_aprox.png",
+                "size": 13992,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "succ-aprox.png",
+                "displayName": "succ-aprox.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/succ-aprox.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/succ-aprox.png",
+                "size": 13992,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "switched.png",
+                "displayName": "switched.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/switched.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/switched.png",
+                "size": 5602,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "termocouple.png",
+                "displayName": "termocouple.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/termocouple.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/termocouple.png",
+                "size": 42388,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "transformer.png",
+                "displayName": "transformer.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/transformer.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/transformer.png",
+                "size": 46829,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "volt_freq.png",
+                "displayName": "volt_freq.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/volt_freq.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/volt_freq.png",
+                "size": 14751,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "volt-dividers.png",
+                "displayName": "volt-dividers.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/volt-dividers.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/volt-dividers.png",
+                "size": 26634,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              },
+              {
+                "name": "volt-freq.png",
+                "displayName": "volt-freq.png",
+                "type": "file",
+                "path": "MM/Signal acquisition and filtering/images/volt-freq.png",
+                "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/images/volt-freq.png",
+                "size": 14751,
+                "uploadedAt": "2025-05-25T13:54:51.000Z"
+              }
+            ]
+          },
+          {
+            "name": "Signal acquisition and filtering.html",
+            "displayName": "Signal acquisition and filtering.html",
+            "type": "file",
+            "path": "MM/Signal acquisition and filtering/Signal acquisition and filtering.html",
+            "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/MM/Signal%20acquisition%20and%20filtering/Signal%20acquisition%20and%20filtering.html",
+            "size": 1832002,
+            "uploadedAt": "2025-05-25T13:51:47.000Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "secret-LADP6KWf7JxwISPSq2dcvnymxGw0fC.html",
+    "displayName": "secret-LADP6KWf7JxwISPSq2dcvnymxGw0fC.html",
+    "type": "file",
+    "path": "secret-LADP6KWf7JxwISPSq2dcvnymxGw0fC.html",
+    "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/secret-LADP6KWf7JxwISPSq2dcvnymxGw0fC.html",
+    "size": 63,
+    "uploadedAt": "2025-05-24T11:51:15.000Z"
+  },
+  {
+    "name": "secret2.html",
+    "displayName": "secret2.html",
+    "type": "file",
+    "path": "secret2.html",
+    "url": "https://0sale3engvyagupd.public.blob.vercel-storage.com/secret2.html",
+    "size": 108,
+    "uploadedAt": "2025-05-25T13:46:38.000Z"
+  }
+]

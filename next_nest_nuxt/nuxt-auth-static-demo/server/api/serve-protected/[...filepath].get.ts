@@ -4,6 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import mime from 'mime-types'; // Pamiętaj o instalacji: npm install mime-types @types/mime-types
 
+import { head as vercelBlobHead } from '@vercel/blob';
+import type { HeadBlobResult } from '@vercel/blob';
+
 export default defineEventHandler(async (event) => {
   // 1. Sprawdź autoryzację (ta sama logika co w middleware, ale tutaj jest kluczowa)
   const userSessionCookie = getCookie(event, 'user-session');
@@ -54,11 +57,15 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Bad Request', message: 'Nieprawidłowo zakodowana ścieżka pliku.' });
   }
 
+  console.info(`[serve-protected] !!! Path: "${requestedPath}" decoded  to "${decodedPath}`);
   requestedPath = decodedPath;
   
   const baseDir = path.resolve(process.cwd(), 'public/protected-content');
   // const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
   const filePath = path.join(baseDir, requestedPath);
+
+
+  console.info(`[serve-protected] !!! Path Traversal Attempt: "${requestedPath}" resolved to "${filePath}" which is outside "${baseDir}"`);
 
   if (!filePath.startsWith(baseDir + path.sep) && filePath !== baseDir) { // path.sep dla separatora systemowego
       console.error(`[serve-protected] Path Traversal Attempt: "${requestedPath}" resolved to "${filePath}" which is outside "${baseDir}"`);
@@ -66,13 +73,38 @@ export default defineEventHandler(async (event) => {
   }
   
   try {
-    const stats = await fs.promises.stat(filePath);
-    if (!stats.isFile()) {
-        throw createError({ statusCode: 404, statusMessage: 'Not Found', message: 'Zasób nie jest plikiem.' });
+    // const stats = await fs.promises.stat(filePath);
+    // if (!stats.isFile()) {
+    //     throw createError({ statusCode: 404, statusMessage: 'Not Found', message: 'Zasób nie jest plikiem.' });
+    // }
+
+    const blobMetaData: HeadBlobResult = await vercelBlobHead(requestedPath);
+    
+    if (!blobMetaData || !blobMetaData.url) {
+        console.warn(`[view-blob] Could not retrieve metadata or URL for blob: ${requestedPath}`);
+        throw createError({ statusCode: 404, message: 'Nie znaleziono metadanych dla pliku w Blob storage.' });
     }
 
-    const fileStream = fs.createReadStream(filePath);
-    const mimeType = mime.lookup(filePath) || 'application/octet-stream';
+    const signedBlobUrl = blobMetaData.url; // To jest podpisany, czasowy URL
+    console.log(`[view-blob] Fetched signed URL for ${requestedPath}: ${signedBlobUrl}`);
+
+    const blobResponse = await fetch(signedBlobUrl);
+
+    console.log(`[view-blob reaponse] Fetched signed URL for ${requestedPath}: ${blobResponse.status}`);
+
+
+    if (!blobResponse.ok) {
+      console.error(`[view-blob] Failed to fetch blob content from signed URL. Status: ${blobResponse.status} ${blobResponse.statusText}`);
+      throw createError({ statusCode: blobResponse.status, statusMessage: blobResponse.statusText, message: `Nie udało się pobrać zawartości pliku z Blob storage (status: ${blobResponse.status}).` });
+    }
+
+    if (!blobResponse.body) {
+        console.warn(`[view-blob] Blob response body is null for: ${requestedPath}`);
+        throw createError({ statusCode: 500, message: 'Otrzymano pustą odpowiedź z Blob storage.' });
+    }
+
+    const fileStream = blobResponse.body;//fs.createReadStream(filePath);
+    const mimeType = mime.lookup(requestedPath) || 'application/octet-stream';
 
     setResponseHeader(event, 'Content-Type', mimeType);
 
