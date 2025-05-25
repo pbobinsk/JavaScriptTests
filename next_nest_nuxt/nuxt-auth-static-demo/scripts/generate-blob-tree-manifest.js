@@ -1,21 +1,12 @@
 // scripts/generate-blob-tree-manifest.js
 
+// generuje manifest z zawartością Vercel Blob, drzewo katalogów i plików
+// obecnie nie wykorzystywane, bo korzystamy z Vercel Blob i pytamy o strukturę dynamicznie
+
 // Dla CommonJS (plik .js bez "type": "module" w package.json)
 import  { list } from '@vercel/blob';
 import fs from 'fs-extra';
 import path from 'node:path'; // Użyj 'node:path' dla spójności
-// const { fileURLToPath } = require('node:url'); // Niepotrzebne, jeśli używamy process.cwd()
-
-// Jeśli używasz ES Modules:
-// import dotenv from 'dotenv';
-// dotenv.config();
-// import { list, type ListBlobResultBlob, type ListFoldedBlobResult } from '@vercel/blob';
-// import fs from 'fs-extra';
-// import path from 'node:path';
-// import { fileURLToPath } from 'node:url';
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
 
 /**
  * @typedef {object} BlobTreeEntry

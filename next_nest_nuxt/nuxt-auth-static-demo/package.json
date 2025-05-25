@@ -3,7 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/generate-public-files-list.js",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

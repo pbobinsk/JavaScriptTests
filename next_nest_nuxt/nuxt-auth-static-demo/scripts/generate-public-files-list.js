@@ -1,4 +1,6 @@
 // scripts/generate-public-files-list.js
+// generuje manifest z zawartością wskazanego pliku, drzewo katalogów i plików
+// obecnie nie wykorzystywane, bo korzystamy z Vercel Blob i pytamy o strukturę dynamicznie
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -13,9 +15,6 @@ const protectedSubDir = 'protected-content'; // Nazwa Twojego katalogu
 const targetDirToList = path.join(publicDir, protectedSubDir);
 const manifestOutputPath = path.resolve(__dirname, '../server/data/public-files-manifest.json'); // Gdzie zapisać JSON
 
-// Załóżmy, że `fs` i `path` są już zaimportowane/wymagane na początku pliku
-// const fs = require('fs-extra'); // lub require('fs').promises dla natywnego fs
-// const path = require('path');
 
 /**
  * Rekursywnie listuje zawartość katalogu, tworząc drzewiastą strukturę.

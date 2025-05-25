@@ -64,7 +64,7 @@ const isLoadingFiles = ref(true);
 const filesError = ref<string | null>(null);
 
 onMounted(async () => {
-  await loadProtectedFiles();
+  // await loadProtectedFiles();
   await loadProtectedFileTree();
 });
 
@@ -72,7 +72,7 @@ async function loadProtectedFiles() {
   isLoadingFiles.value = true;
   filesError.value = null;
   try {
-    // Używamy $fetch do pobrania listy plików
+    // Używamy $fetch do pobrania listy plików, ale to zwraca drzewo, więc ta metoda nie zadziała
     const files = await $fetch<ProtectedFile[]>('/api/protected-files-list');
     protectedFiles.value = files;
   } catch (e: any) {
