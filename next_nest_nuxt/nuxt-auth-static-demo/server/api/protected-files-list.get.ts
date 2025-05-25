@@ -6,7 +6,7 @@ import path from 'node:path';
 import  { list } from '@vercel/blob';
 
 //import manifestData from '~/server/data/public-files-manifest.json';
-import manifestData from '~/server/data/blob-tree-manifest.json';
+//import manifestData from '~/server/data/blob-tree-manifest.json';
 
 /**
  * @typedef {object} BlobTreeEntry

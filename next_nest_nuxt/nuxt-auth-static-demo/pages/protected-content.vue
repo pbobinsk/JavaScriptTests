@@ -13,7 +13,7 @@
       <div v-else-if="filesError">
         <p class="api-error-message"><strong>Błąd:</strong> {{ filesError }}</p>
       </div>
-      <div v-else-if="protectedFiles.length === 0">
+      <div v-else-if="protectedFileTree.length === 0">
         <p>Brak dostępnych chronionych plików.</p>
       </div>
     <!-- <ul v-else-if="protectedFiles.length > 0" class="protected-links">
