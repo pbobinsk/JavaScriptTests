@@ -38,7 +38,7 @@ interface BlobTreeEntry {
  * @returns {Promise<BlobTreeEntry[]>}
  */
  async function listBlobTreeRecursive(currentPrefix = ''): Promise<BlobTreeEntry[]> {
-  console.log(`Listowanie Blob dla prefixu: "${currentPrefix || '(root Blob store)'}"`);
+  // console.log(`Listowanie Blob dla prefixu: "${currentPrefix || '(root Blob store)'}"`);
   
   const treeEntries: BlobTreeEntry[] = [];
 
@@ -81,7 +81,7 @@ interface BlobTreeEntry {
 
 
         if (folderName) { // Dodaj tylko jeśli nazwa folderu nie jest pusta
-          console.log(`  Wchodzenie do folderu: ${folderPathname} (nazwa: ${folderName})`);
+          // console.log(`  Wchodzenie do folderu: ${folderPathname} (nazwa: ${folderName})`);
           const children = await listBlobTreeRecursive(folderPathname); // Rekursywne wywołanie dla podfolderu
           treeEntries.push({
             name: folderName,
@@ -243,15 +243,22 @@ async function listDirectoryRecursive(
   });
 }
 
+interface UserSession { // Typ dla danych sesji
+  id: string;
+  login: string;
+  roles: string[];
+}
 
 export default defineEventHandler(async (event) => {
   // 1. Sprawdź autoryzację (bez zmian)
   const userSessionCookie = getCookie(event, 'user-session');
+  let currentUserSession: UserSession | null = null;
   
   if (!userSessionCookie) { // <--- SPRAWDZENIE CZY ISTNIEJE (NAJPROSTSZE)
     console.log('[protected-files-list] No session cookie, access denied.');
     throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Brak sesji użytkownika.' });
   }
+
   try {
     const parsedSession = JSON.parse(userSessionCookie);
     if (!parsedSession || !parsedSession.login) throw new Error('Invalid session');
@@ -259,16 +266,93 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
   }
 
+  try {
+    currentUserSession = JSON.parse(userSessionCookie) as UserSession;
+    if (!currentUserSession || !currentUserSession.login || !currentUserSession.roles) {
+      throw new Error('Invalid session data');
+    }
+    console.log('[protected-files-list] User authenticated:', currentUserSession.login, 'with roles:', currentUserSession.roles);
+  } catch (e) {
+    console.error('[protected-files-list] Invalid session cookie:', e);
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
+  }
+
+
   // 2. Listuj pliki HTML z katalogu server/protected-assets/
-  const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
+  //const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
+
+
+function findHtmlFilesInDirectory(
+  entries : FileSystemEntry[],
+  targetStartDirectoryName : string,
+  isInsideTargetStartDirectory : boolean = false
+) : FileSystemEntry[] {
+  let htmlFiles : FileSystemEntry[] = [];
+  if (!entries) return htmlFiles; // Zabezpieczenie przed undefined entries
+
+  for (const entry of entries) {
+    if (entry.type === 'directory') {
+      if (entry.name.toLowerCase() === 'images') {
+        continue;
+      }
+      if (isInsideTargetStartDirectory) {
+        if (entry.children && entry.children.length > 0) {
+          htmlFiles = htmlFiles.concat(
+            findHtmlFilesInDirectory(entry.children, targetStartDirectoryName, true)
+          );
+        }
+      } else if (entry.name === targetStartDirectoryName) {
+        if (entry.children && entry.children.length > 0) {
+          htmlFiles = htmlFiles.concat(
+            findHtmlFilesInDirectory(entry.children, targetStartDirectoryName, true)
+          );
+        }
+      } else if (entry.children && entry.children.length > 0) {
+        // Ta gałąź może być usunięta, jeśli 'MM' jest zawsze na pierwszym poziomie
+        htmlFiles = htmlFiles.concat(
+            findHtmlFilesInDirectory(entry.children, targetStartDirectoryName, false)
+        );
+      }
+    } else if (entry.type === 'file' && isInsideTargetStartDirectory) {
+      // Użyj path.extname do sprawdzenia rozszerzenia
+      if (path.extname(entry.name).toLowerCase() === '.html') {
+        htmlFiles.push(entry);
+      }
+    }
+  }
+  return htmlFiles;
+}
 
   try {
     // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
-    console.log('Z API');
+    // console.log('Z API');
     const htmlFiles = await listBlobTreeRecursive('');
-    console.log('Z API');
-    console.log(htmlFiles as FileSystemEntry[]);
-    return htmlFiles as FileSystemEntry[];
+    // console.log('Z API');
+    // console.log(htmlFiles as FileSystemEntry[]);
+
+    let filesToReturn: FileSystemEntry[];
+
+    const isAdmin = currentUserSession.roles.includes('admin');
+    const isUser = currentUserSession.roles.includes('user');
+
+    if (isAdmin) {
+      console.log('[public-files-list] Admin access: returning all.');
+      return htmlFiles as FileSystemEntry[];
+    } else if (isUser) {
+      // Zwykły użytkownik też widzi pliki HTML z "MM" bez 'images'
+      filesToReturn = findHtmlFilesInDirectory(htmlFiles, "MM");
+      console.log('[public-files-list] User access: returning HTML files from "MM" (no images).');
+    } else {
+      // Inne role lub brak ról - pusta lista
+      filesToReturn = [];
+      console.log('[public-files-list] No matching roles, returning empty list.');
+    }
+    
+    // Możesz dodać sortowanie do `filesToReturn`, jeśli jest to płaska lista
+    filesToReturn.sort((a,b) => a.name.localeCompare(b.name));
+
+    return filesToReturn;
+
   } catch (error) {
     console.error('[protected-files-list] Error listing HTML files:', error);
     throw createError({ statusCode: 500, statusMessage: 'Internal Server Error', message: 'Nie udało się wylistować plików HTML.' });
