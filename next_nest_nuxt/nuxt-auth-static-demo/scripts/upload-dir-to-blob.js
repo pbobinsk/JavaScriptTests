@@ -6,9 +6,9 @@ import mime from 'mime-types';     // mime-types również często ma domyślny 
 
 // --- Konfiguracja ---
 // Ścieżka do lokalnego katalogu, który chcesz przesłać
-const LOCAL_SOURCE_DIRECTORY = './public/protected-content'; // ZMIEŃ NA SWÓJ KATALOG ŹRÓDŁOWY
+const LOCAL_SOURCE_DIRECTORY = './public/SoundArt'; // ZMIEŃ NA SWÓJ KATALOG ŹRÓDŁOWY
 
-const BLOB_TARGET_PREFIX = 'user-uploads/'; // ZMIEŃ NA SWÓJ DOCELOWY PREFIX W BLOB
+const BLOB_TARGET_PREFIX = 'MMSoundArt/'; // ZMIEŃ NA SWÓJ DOCELOWY PREFIX W BLOB
 
 // Domyślny poziom dostępu dla przesyłanych plików
 const DEFAULT_ACCESS_LEVEL = 'public'; // 'private' lub 'public'

@@ -59,7 +59,17 @@ export default defineEventHandler(async (event) => {
 
   console.info(`[serve-protected] !!! Path: "${requestedPath}" decoded  to "${decodedPath}`);
   requestedPath = decodedPath;
-  
+  let publicRequestedPath = 'http://localhost:3000/protected-content/'+decodedPath;
+
+  if (decodedPath.endsWith('favicon.ico')) {
+    // Załóżmy, że masz globalną faviconę w public/favicon.ico
+    const publicFaviconUrl = '/favicon.ico'; // Ścieżka publiczna
+    console.log(`[view-blob] Przekierowanie żądania dla favicon.ico do: ${publicFaviconUrl}`);
+    await sendRedirect(event, publicFaviconUrl, 302); // 302 Found - tymczasowe przekierowanie
+    return; // Ważne: zakończ wykonanie handlera po wysłaniu przekierowania
+  }
+
+
   const baseDir = path.resolve(process.cwd(), 'public/protected-content');
   // const baseDir = path.resolve(process.cwd(), 'server/protected-assets');
   const filePath = path.join(baseDir, requestedPath);
@@ -77,21 +87,23 @@ export default defineEventHandler(async (event) => {
     // if (!stats.isFile()) {
     //     throw createError({ statusCode: 404, statusMessage: 'Not Found', message: 'Zasób nie jest plikiem.' });
     // }
-
+/*
+    !!!  zablokowane Vercel Blob !!!
     const blobMetaData: HeadBlobResult = await vercelBlobHead(requestedPath);
     
     if (!blobMetaData || !blobMetaData.url) {
         console.warn(`[view-blob] Could not retrieve metadata or URL for blob: ${requestedPath}`);
         throw createError({ statusCode: 404, message: 'Nie znaleziono metadanych dla pliku w Blob storage.' });
     }
-
     const signedBlobUrl = blobMetaData.url; // To jest podpisany, czasowy URL
     console.log(`[view-blob] Fetched signed URL for ${requestedPath}: ${signedBlobUrl}`);
+  */  
+    console.log(`[view-blob] Fetched public URL for ${requestedPath}: ${publicRequestedPath}`);
 
-    const blobResponse = await fetch(signedBlobUrl);
+//  !!!  zablokowane Vercel Blob !!!  const blobResponse = await fetch(signedBlobUrl);
+    const blobResponse = await fetch(publicRequestedPath);
 
     console.log(`[view-blob reaponse] Fetched signed URL for ${requestedPath}: ${blobResponse.status}`);
-
 
     if (!blobResponse.ok) {
       console.error(`[view-blob] Failed to fetch blob content from signed URL. Status: ${blobResponse.status} ${blobResponse.statusText}`);

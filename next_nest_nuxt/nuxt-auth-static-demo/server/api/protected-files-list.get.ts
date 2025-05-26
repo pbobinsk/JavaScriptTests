@@ -238,38 +238,6 @@ interface UserSession { // Typ dla danych sesji
   roles: string[];
 }
 
-export default defineEventHandler(async (event) => {
-  // 1. Sprawdź autoryzację (bez zmian)
-  const userSessionCookie = getCookie(event, 'user-session');
-  let currentUserSession: UserSession | null = null;
-  
-  if (!userSessionCookie) { // <--- SPRAWDZENIE CZY ISTNIEJE (NAJPROSTSZE)
-    console.log('[protected-files-list] No session cookie, access denied.');
-    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Brak sesji użytkownika.' });
-  }
-
-  try {
-    const parsedSession = JSON.parse(userSessionCookie);
-    if (!parsedSession || !parsedSession.login) throw new Error('Invalid session');
-  } catch (e) {
-    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
-  }
-
-  try {
-    currentUserSession = JSON.parse(userSessionCookie) as UserSession;
-    if (!currentUserSession || !currentUserSession.login || !currentUserSession.roles) {
-      throw new Error('Invalid session data');
-    }
-    console.log('[protected-files-list] User authenticated:', currentUserSession.login, 'with roles:', currentUserSession.roles);
-  } catch (e) {
-    console.error('[protected-files-list] Invalid session cookie:', e);
-    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
-  }
-
-
-  // 2. Listuj pliki HTML z katalogu server/protected-assets/
-  //const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
-
 
 function findHtmlFilesInDirectory(
 
@@ -313,6 +281,79 @@ function findHtmlFilesInDirectory(
   return htmlFiles;
 }
 
+function findPdfFilesInDirectory(
+
+  entries : FileSystemEntry[],
+  targetStartDirectoryName : string,
+  isInsideTargetStartDirectory : boolean = false
+) : FileSystemEntry[] {
+  let htmlFiles : FileSystemEntry[] = [];
+  if (!entries) return htmlFiles; // Zabezpieczenie przed undefined entries
+
+  for (const entry of entries) {
+    if (entry.type === 'directory') {
+      if (isInsideTargetStartDirectory) {
+        if (entry.children && entry.children.length > 0) {
+          htmlFiles = htmlFiles.concat(
+            findPdfFilesInDirectory(entry.children, targetStartDirectoryName, true)
+          );
+        }
+      } else if (entry.name === targetStartDirectoryName) {
+        if (entry.children && entry.children.length > 0) {
+          htmlFiles = htmlFiles.concat(
+            findPdfFilesInDirectory(entry.children, targetStartDirectoryName, true)
+          );
+        }
+      } else if (entry.children && entry.children.length > 0) {
+        // Ta gałąź może być usunięta, jeśli 'MM' jest zawsze na pierwszym poziomie
+        htmlFiles = htmlFiles.concat(
+            findPdfFilesInDirectory(entry.children, targetStartDirectoryName, false)
+        );
+      }
+    } else if (entry.type === 'file' && isInsideTargetStartDirectory) {
+      // Użyj path.extname do sprawdzenia rozszerzenia
+      if (path.extname(entry.name).toLowerCase() === '.pdf') {
+        htmlFiles.push(entry);
+      }
+    }
+  }
+  return htmlFiles;
+}
+
+
+export default defineEventHandler(async (event) => {
+  // 1. Sprawdź autoryzację (bez zmian)
+  const userSessionCookie = getCookie(event, 'user-session');
+  let currentUserSession: UserSession | null = null;
+  
+  if (!userSessionCookie) { // <--- SPRAWDZENIE CZY ISTNIEJE (NAJPROSTSZE)
+    console.log('[protected-files-list] No session cookie, access denied.');
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Brak sesji użytkownika.' });
+  }
+
+  try {
+    const parsedSession = JSON.parse(userSessionCookie);
+    if (!parsedSession || !parsedSession.login) throw new Error('Invalid session');
+  } catch (e) {
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
+  }
+
+  try {
+    currentUserSession = JSON.parse(userSessionCookie) as UserSession;
+    if (!currentUserSession || !currentUserSession.login || !currentUserSession.roles) {
+      throw new Error('Invalid session data');
+    }
+    console.log('[protected-files-list] User authenticated:', currentUserSession.login, 'with roles:', currentUserSession.roles);
+  } catch (e) {
+    console.error('[protected-files-list] Invalid session cookie:', e);
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized', message: 'Nieprawidłowa sesja.' });
+  }
+
+
+  // 2. Listuj pliki HTML z katalogu server/protected-assets/
+  //const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
+
+
   try {
     // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
     // console.log('Z API');
@@ -322,6 +363,7 @@ function findHtmlFilesInDirectory(
 
     let filesToReturn: FileSystemEntry[];
     let filesToReturn2: FileSystemEntry[];
+    let filesToReturn3: FileSystemEntry[];
 
     const isAdmin = currentUserSession.roles.includes('admin');
     const isUser = currentUserSession.roles.includes('user');
@@ -332,13 +374,16 @@ function findHtmlFilesInDirectory(
     } else if (isUser) {
       // Zwykły użytkownik też widzi pliki HTML z "MM" bez 'images'
       filesToReturn = findHtmlFilesInDirectory(htmlFiles, "MM");
-      filesToReturn2 = findHtmlFilesInDirectory(htmlFiles, "user-uploads");
+      filesToReturn2 = findPdfFilesInDirectory(htmlFiles, "PDF");
+      filesToReturn3 = findHtmlFilesInDirectory(htmlFiles, "MMSoundArt");
 
       console.log('[public-files-list] User access: returning HTML files from "MM" (no images).');
     } else {
       // Inne role lub brak ról - pusta lista
       filesToReturn = [];
       filesToReturn2 = [];
+      filesToReturn3 = [];
+
       console.log('[public-files-list] No matching roles, returning empty list.');
     }
     
@@ -347,15 +392,22 @@ function findHtmlFilesInDirectory(
 
     const resultWrappedInDirectory: FileSystemEntry[] = [ 
       {
-        name: 'Pliki HTML z MM',
-        displayName: 'Pliki HTML z MM',
+        name: 'Pliki HTML z MM Sound Technology',
+        displayName: 'Pliki HTML z MM Sound Technology',
         type: 'directory',
         path: 'virtualPath',
         children: filesToReturn
       },
       {
-        name: 'Pliki HTML z SountArt',
-        displayName: 'Pliki HTML z SountArt',
+        name: 'Pliki HTML z MM Sound Art',
+        displayName: 'Pliki HTML z MM Sound Art',
+        type: 'directory',
+        path: 'virtualPath',
+        children: filesToReturn3
+      },
+      {
+        name: 'Pliki PDF z pandemii',
+        displayName: 'Pliki PDF z pandemii',
         type: 'directory',
         path: 'virtualPath',
         children: filesToReturn2
