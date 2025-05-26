@@ -8,17 +8,6 @@ import  { list } from '@vercel/blob';
 //import manifestData from '~/server/data/public-files-manifest.json';
 //import manifestData from '~/server/data/blob-tree-manifest.json';
 
-/**
- * @typedef {object} BlobTreeEntry
- * @property {string} name - Nazwa pliku lub folderu (ostatni segment pathname)
- * @property {string} displayName - Nazwa pliku lub folderu (ostatni segment pathname)
- * @property {'file' | 'directory'} type - Typ elementu
- * @property {string} path - Pełna ścieżka w Blob storage (używana do pobierania/operacji)
- * @property {string} [url] - URL do pliku (jeśli to plik, czasowy dla prywatnych)
- * @property {number} [size] - Rozmiar pliku w bajtach (jeśli to plik)
- * @property {Date} [uploadedAt] - Data przesłania (jeśli to plik)
- * @property {BlobTreeEntry[]} [children] - Dzieci, jeśli to folder
- */
 
 interface BlobTreeEntry {
   name: string,
@@ -283,6 +272,7 @@ export default defineEventHandler(async (event) => {
 
 
 function findHtmlFilesInDirectory(
+
   entries : FileSystemEntry[],
   targetStartDirectoryName : string,
   isInsideTargetStartDirectory : boolean = false
@@ -331,6 +321,7 @@ function findHtmlFilesInDirectory(
     // console.log(htmlFiles as FileSystemEntry[]);
 
     let filesToReturn: FileSystemEntry[];
+    let filesToReturn2: FileSystemEntry[];
 
     const isAdmin = currentUserSession.roles.includes('admin');
     const isUser = currentUserSession.roles.includes('user');
@@ -341,17 +332,38 @@ function findHtmlFilesInDirectory(
     } else if (isUser) {
       // Zwykły użytkownik też widzi pliki HTML z "MM" bez 'images'
       filesToReturn = findHtmlFilesInDirectory(htmlFiles, "MM");
+      filesToReturn2 = findHtmlFilesInDirectory(htmlFiles, "user-uploads");
+
       console.log('[public-files-list] User access: returning HTML files from "MM" (no images).');
     } else {
       // Inne role lub brak ról - pusta lista
       filesToReturn = [];
+      filesToReturn2 = [];
       console.log('[public-files-list] No matching roles, returning empty list.');
     }
     
     // Możesz dodać sortowanie do `filesToReturn`, jeśli jest to płaska lista
     filesToReturn.sort((a,b) => a.name.localeCompare(b.name));
 
-    return filesToReturn;
+    const resultWrappedInDirectory: FileSystemEntry[] = [ 
+      {
+        name: 'Pliki HTML z MM',
+        displayName: 'Pliki HTML z MM',
+        type: 'directory',
+        path: 'virtualPath',
+        children: filesToReturn
+      },
+      {
+        name: 'Pliki HTML z SountArt',
+        displayName: 'Pliki HTML z SountArt',
+        type: 'directory',
+        path: 'virtualPath',
+        children: filesToReturn2
+      },
+
+    ];
+
+    return resultWrappedInDirectory;
 
   } catch (error) {
     console.error('[protected-files-list] Error listing HTML files:', error);
