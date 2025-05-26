@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
 
   console.info(`[serve-protected] !!! Path: "${requestedPath}" decoded  to "${decodedPath}`);
   requestedPath = decodedPath;
-  let publicRequestedPath = 'http://localhost:3000/protected-content/'+decodedPath;
+  let publicRequestedPath = '/protected-content/'+decodedPath;
 
   if (decodedPath.endsWith('favicon.ico')) {
     // Załóżmy, że masz globalną faviconę w public/favicon.ico
@@ -98,6 +98,17 @@ export default defineEventHandler(async (event) => {
     const signedBlobUrl = blobMetaData.url; // To jest podpisany, czasowy URL
     console.log(`[view-blob] Fetched signed URL for ${requestedPath}: ${signedBlobUrl}`);
   */  
+
+
+    const host = getRequestHost(event, { xForwardedHost: true });
+    const protocol = getRequestProtocol(event, { xForwardedProto: true });
+    
+    if (host && protocol) {
+      console.log( ` UWAGA  ${protocol}://${host}`);
+    }
+
+    publicRequestedPath = `${protocol}://${host}${publicRequestedPath}`;
+
     console.log(`[view-blob] Fetched public URL for ${requestedPath}: ${publicRequestedPath}`);
 
 //  !!!  zablokowane Vercel Blob !!!  const blobResponse = await fetch(signedBlobUrl);
