@@ -433,7 +433,7 @@ export default defineEventHandler(async (event) => {
     if (manifestData) {
 
       console.log('[public-files-list] Zwracanie danych z zaimportowanego manifestu JSON.');
-      console.log(manifestData as FileSystemEntry[]);
+      // console.log(manifestData as FileSystemEntry[]);
       return manifestData as FileSystemEntry[]; // Rzutowanie typu dla pewności
     } else {
       // To nie powinno się zdarzyć, jeśli import się powiedzie

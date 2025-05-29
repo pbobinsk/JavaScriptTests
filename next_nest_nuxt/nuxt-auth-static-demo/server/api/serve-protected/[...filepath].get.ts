@@ -117,9 +117,17 @@ export default defineEventHandler(async (event) => {
     console.log(`[view-blob] Fetched public URL for ${requestedPath}: ${publicRequestedPath}`);
 
 //  !!!  zablokowane Vercel Blob !!!  const blobResponse = await fetch(signedBlobUrl);
-    const blobResponse = await fetch(publicRequestedPath);
+    let blobResponse = await fetch(publicRequestedPath);
 
     console.log(`[view-blob reaponse] Fetched signed URL for ${requestedPath}: ${blobResponse.status}`);
+
+
+    if (!blobResponse.ok && publicRequestedPath.endsWith('.png')) {
+      console.warn(`[view-blob] Failed to fetch png content from signed URL. Status: ${blobResponse.status} ${blobResponse.statusText}`);
+      publicRequestedPath = publicRequestedPath.replace('png','PNG');
+      console.log(`Trying ${publicRequestedPath}`)
+      blobResponse = await fetch(publicRequestedPath);
+    }
 
     if (!blobResponse.ok) {
       console.error(`[view-blob] Failed to fetch blob content from signed URL. Status: ${blobResponse.status} ${blobResponse.statusText}`);
