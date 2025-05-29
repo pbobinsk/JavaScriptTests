@@ -1,0 +1,1 @@
+export const START_URL = 'https://www.ire.pw.edu.pl/~mmedia/pub/';

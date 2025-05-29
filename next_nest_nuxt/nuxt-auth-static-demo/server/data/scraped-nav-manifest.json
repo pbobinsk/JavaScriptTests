@@ -1,0 +1,557 @@
+[
+  {
+    "name": "www.ire.pw.edu.pl/~mmedia/pub/",
+    "type": "directory",
+    "url": "https://www.ire.pw.edu.pl/~mmedia/pub/",
+    "relativePath": "",
+    "children": [
+      {
+        "name": "Acoustics and Audio Technology",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/index.html",
+        "type": "page",
+        "relativePath": "Acoustics%20and%20Audio%20Technology/index.html",
+        "children": [
+          {
+            "name": "Auditory Perception",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Auditory%20perception/Auditory_Perception.pdf",
+            "type": "asset",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Auditory%20perception/Auditory_Perception.pdf"
+          },
+          {
+            "name": "Basics of Audio Recording",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Basics%20of%20audio%20recording/Basics%20of%20audio%20recording.html",
+            "type": "page",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Basics%20of%20audio%20recording/Basics%20of%20audio%20recording.html",
+            "children": []
+          },
+          {
+            "name": "Basics of Physical Acoustics",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Basics%20of%20physical%20acoustics/Basics%20of%20physical%20acoustics.pdf",
+            "type": "asset",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Basics%20of%20physical%20acoustics/Basics%20of%20physical%20acoustics.pdf"
+          },
+          {
+            "name": "Introduction",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Introduction/introduction.pdf",
+            "type": "asset",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Introduction/introduction.pdf"
+          },
+          {
+            "name": "Room Acoustics and Sound Reinforcement Systems",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Room%20acoustics/Room%20acoustics%20and%20sound%20systems.pdf",
+            "type": "asset",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Room%20acoustics/Room%20acoustics%20and%20sound%20systems.pdf"
+          },
+          {
+            "name": "Signal Acquisition and Filtering",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Signal%20acquisition%20and%20filtering/Signal%20acquisition%20and%20filtering.html",
+            "type": "page",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Signal%20acquisition%20and%20filtering/Signal%20acquisition%20and%20filtering.html",
+            "children": []
+          },
+          {
+            "name": "Sound Postproduction Workstation Programming",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Sound%20Postproduction%20Workstation/Sound%20Postproduction%20Workstation%20Programming.html",
+            "type": "page",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Sound%20Postproduction%20Workstation/Sound%20Postproduction%20Workstation%20Programming.html",
+            "children": []
+          },
+          {
+            "name": "Sound Synthesis",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Computer%20Sound%20Synthesis%20Fundamentals/Sound%20Synthesis.html",
+            "type": "page",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Computer%20Sound%20Synthesis%20Fundamentals/Sound%20Synthesis.html",
+            "children": []
+          },
+          {
+            "name": "Speech Synthesis",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Acoustics%20and%20Audio%20Technology/Computer%20Sound%20Synthesis%20Fundamentals/Speech%20Synthesis.html",
+            "type": "page",
+            "relativePath": "Acoustics%20and%20Audio%20Technology/Computer%20Sound%20Synthesis%20Fundamentals/Speech%20Synthesis.html",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Foundations of Multimedia Techniques",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Foundations%20of%20Multimedia%20Techniques/index.html",
+        "type": "page",
+        "relativePath": "Foundations%20of%20Multimedia%20Techniques/index.html",
+        "children": [
+          {
+            "name": "Basic Tools for Digital Media Programming in Python",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Foundations%20of%20Multimedia%20Techniques/Prog%20for%20Digital%20Media/Prog-MM-Python.html",
+            "type": "page",
+            "relativePath": "Foundations%20of%20Multimedia%20Techniques/Prog%20for%20Digital%20Media/Prog-MM-Python.html",
+            "children": []
+          },
+          {
+            "name": "Image and Sound Programming for Web",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Foundations%20of%20Multimedia%20Techniques/Prog%20for%20Digital%20Media/Prog-MM-Web.pdf",
+            "type": "asset",
+            "relativePath": "Foundations%20of%20Multimedia%20Techniques/Prog%20for%20Digital%20Media/Prog-MM-Web.pdf"
+          },
+          {
+            "name": "Stochastic Models for Visual Tracking",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Foundations%20of%20Multimedia%20Techniques/Math%20for%20Digital%20Media/Prob4Track.html",
+            "type": "page",
+            "relativePath": "Foundations%20of%20Multimedia%20Techniques/Math%20for%20Digital%20Media/Prob4Track.html",
+            "children": []
+          },
+          {
+            "name": "Transformation Theory and Optimization",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Foundations%20of%20Multimedia%20Techniques/Math%20for%20Digital%20Media/Transforms.html",
+            "type": "page",
+            "relativePath": "Foundations%20of%20Multimedia%20Techniques/Math%20for%20Digital%20Media/Transforms.html",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Graphic Design in Multimedia",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/index.html",
+        "type": "page",
+        "relativePath": "Graphic%20Design%20in%20Multimedia/index.html",
+        "children": [
+          {
+            "name": "Augmented Reality in Practice",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf#page=174",
+            "type": "asset",
+            "relativePath": "Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf"
+          },
+          {
+            "name": "Graphic Design Fundamentals",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf",
+            "type": "asset",
+            "relativePath": "Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf"
+          },
+          {
+            "name": "Lettering",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf#page=50",
+            "type": "asset",
+            "relativePath": "Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf"
+          },
+          {
+            "name": "Multimedia Design",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf#page=212",
+            "type": "asset",
+            "relativePath": "Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf"
+          },
+          {
+            "name": "Sign",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf#page=139",
+            "type": "asset",
+            "relativePath": "Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf"
+          },
+          {
+            "name": "Typography",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf#page=96",
+            "type": "asset",
+            "relativePath": "Graphic%20Design%20in%20Multimedia/gdm/Graphic%20Design%20in%20Multimedia.pdf"
+          }
+        ]
+      },
+      {
+        "name": "Main Audiovisual Issues",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Main%20Audiovisual%20Issues/index.html",
+        "type": "page",
+        "relativePath": "Main%20Audiovisual%20Issues/index.html",
+        "children": [
+          {
+            "name": "Animation Fundamentals",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf#page=52",
+            "type": "asset",
+            "relativePath": "Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf"
+          },
+          {
+            "name": "Final Cut Pro X: Video Editing and Processing Basics",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf#page=113",
+            "type": "asset",
+            "relativePath": "Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf"
+          },
+          {
+            "name": "Light, Perception, Image",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf#page=22",
+            "type": "asset",
+            "relativePath": "Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf"
+          },
+          {
+            "name": "Main Audiovisual Issues",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf",
+            "type": "asset",
+            "relativePath": "Main%20Audiovisual%20Issues/mai/Main%20Audiovisual%20Issues.pdf"
+          }
+        ]
+      },
+      {
+        "name": "Multimedia Techniques - Applications",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/index.html",
+        "type": "page",
+        "relativePath": "Multimedia%20Techniques%20-%20Applications/index.html",
+        "children": [
+          {
+            "name": "AV Cinema Compression Formats",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/AV%20cinema%20compression%20formats/AV%20cinema%20compression%20formats.htm",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/AV%20cinema%20compression%20formats/AV%20cinema%20compression%20formats.htm",
+            "children": []
+          },
+          {
+            "name": "AV Compression Formats",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/AV%20compression%20formats/AV%20compression%20formats.htm",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/AV%20compression%20formats/AV%20compression%20formats.htm",
+            "children": []
+          },
+          {
+            "name": "AV Postproduction Formats",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/AV%20postproduction%20formats/AV%20postproduction%20formats.htm",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/AV%20postproduction%20formats/AV%20postproduction%20formats.htm",
+            "children": []
+          },
+          {
+            "name": "AV Production Formats",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/AV%20production%20formats/AV%20production%20formats.htm",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/AV%20production%20formats/AV%20production%20formats.htm",
+            "children": []
+          },
+          {
+            "name": "Color Temperature",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/Color%20Temperature/color_temperature.html",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/Color%20Temperature/color_temperature.html",
+            "children": []
+          },
+          {
+            "name": "Digital Media Descriptors",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/Indexing%20and%20searching/media_descriptors.html",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/Indexing%20and%20searching/media_descriptors.html",
+            "children": []
+          },
+          {
+            "name": "Digital Media Indexing",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/Indexing%20and%20searching/media_indexing.html",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/Indexing%20and%20searching/media_indexing.html",
+            "children": []
+          },
+          {
+            "name": "Digital Media Search",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/Indexing%20and%20searching/media_search.html",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/Indexing%20and%20searching/media_search.html",
+            "children": []
+          },
+          {
+            "name": "Motion Activity Descriptors",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Multimedia%20Techniques%20-%20Applications/Motion%20activity/motion_activity.html",
+            "type": "page",
+            "relativePath": "Multimedia%20Techniques%20-%20Applications/Motion%20activity/motion_activity.html",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Practical Sound",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/index.html",
+        "type": "page",
+        "relativePath": "Practical%20Sound/index.html",
+        "children": [
+          {
+            "name": "Basics of Ear Training",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Basics%20of%20Ear%20Training/Basics%20of%20Ear%20Training.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Basics%20of%20Ear%20Training/Basics%20of%20Ear%20Training.html",
+            "children": []
+          },
+          {
+            "name": "Designing Final Mix Session",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Designing%20final%20mix%20session/Designing%20Final%20Mix%20Session.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Designing%20final%20mix%20session/Designing%20Final%20Mix%20Session.html",
+            "children": []
+          },
+          {
+            "name": "Designing Mixing and Mastering Session for Film Music",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Designing%20mixing%20and%20mastering%20session%20for%20film%20music/Designing%20mixing%20and%20mastering%20session%20for%20film%20music.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Designing%20mixing%20and%20mastering%20session%20for%20film%20music/Designing%20mixing%20and%20mastering%20session%20for%20film%20music.html",
+            "children": []
+          },
+          {
+            "name": "Direct Sound Recording",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Direct%20Sound%20Recording/Direct%20Sound%20Recording_6.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Direct%20Sound%20Recording/Direct%20Sound%20Recording_6.html",
+            "children": []
+          },
+          {
+            "name": "Lip Syncing Tools",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Lip%20syncing%20tools/Lip%20syncing%20tools.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Lip%20syncing%20tools/Lip%20syncing%20tools.html",
+            "children": []
+          },
+          {
+            "name": "Music for Film Editing Techniques",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Music%20for%20film%20editing%20techniques/Music%20for%20film%20editing%20techniques.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Music%20for%20film%20editing%20techniques/Music%20for%20film%20editing%20techniques.html",
+            "children": []
+          },
+          {
+            "name": "Music for Film Production Techniques",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Music%20for%20film%20production%20techniques/Music%20for%20film%20production%20techniques.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Music%20for%20film%20production%20techniques/Music%20for%20film%20production%20techniques.html",
+            "children": []
+          },
+          {
+            "name": "Portable Sound Recorders",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Portable%20Sound%20Recorders/Portable%20Sound%20Recorders.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Portable%20Sound%20Recorders/Portable%20Sound%20Recorders.html",
+            "children": []
+          },
+          {
+            "name": "Practical Aspects of Auditory Perception for Audiovisual Media",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Practical%20Aspects%20of%20Auditory%20Perception%20for%20A_V%20Media/Practical%20aspects%20of%20auditory%20preception%20for%20A_V%20media.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Practical%20Aspects%20of%20Auditory%20Perception%20for%20A_V%20Media/Practical%20aspects%20of%20auditory%20preception%20for%20A_V%20media.html",
+            "children": []
+          },
+          {
+            "name": "Principles of Multichannel Sound",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Principles%20of%20Multichannel%20Sound/Principles%20of%20Multichannel%20Sound.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Principles%20of%20Multichannel%20Sound/Principles%20of%20Multichannel%20Sound.html",
+            "children": []
+          },
+          {
+            "name": "Sound Postproduction Plugins",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Sound%20Postproduction%20Plugins/Sound%20Postproduction%20Plugins.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Sound%20Postproduction%20Plugins/Sound%20Postproduction%20Plugins.html",
+            "children": []
+          },
+          {
+            "name": "Sound Postproduction Workstation",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Sound%20Postproduction%20Workstation/Sound%20Postproduction%20Workstation.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Sound%20Postproduction%20Workstation/Sound%20Postproduction%20Workstation.html",
+            "children": []
+          },
+          {
+            "name": "Sound Reproduction Systems",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Practical%20Sound/Sound%20Reproduction%20Systems/Sound%20Reproduction%20Systems.html",
+            "type": "page",
+            "relativePath": "Practical%20Sound/Sound%20Reproduction%20Systems/Sound%20Reproduction%20Systems.html",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Sound Aesthetics",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/index.html",
+        "type": "page",
+        "relativePath": "Sound%20Aesthetics/index.html",
+        "children": [
+          {
+            "name": "Aesthetics of Augmented Audio",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Aesthetics%20of%20Augmented%20Audio/Aesthetics%20of%20Augmented%20Audio.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Aesthetics%20of%20Augmented%20Audio/Aesthetics%20of%20Augmented%20Audio.html",
+            "children": []
+          },
+          {
+            "name": "Basic Theory of Musical Preferences",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Basic%20Theory%20of%20Musical%20Preferences/Basic%20Theory%20of%20Musical%20Preferences.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Basic%20Theory%20of%20Musical%20Preferences/Basic%20Theory%20of%20Musical%20Preferences.html",
+            "children": []
+          },
+          {
+            "name": "Basics of History of Film Music",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Basics%20of%20History%20of%20Film%20Music/Basics_of_History_of_Film_Music6.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Basics%20of%20History%20of%20Film%20Music/Basics_of_History_of_Film_Music6.html",
+            "children": []
+          },
+          {
+            "name": "Elements of Musical Forms",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Elements%20of%20Musical%20Forms/Elements%20of%20Musical%20Form.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Elements%20of%20Musical%20Forms/Elements%20of%20Musical%20Form.html",
+            "children": []
+          },
+          {
+            "name": "Film Music Aesthetics",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Film%20Music%20Aesthetics/Film%20Music%20Aesthetics%201.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Film%20Music%20Aesthetics/Film%20Music%20Aesthetics%201.html",
+            "children": []
+          },
+          {
+            "name": "Film Sound Aesthetics",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Film%20Sound%20Aesthetics/Film%20Sound%20Aesthetics.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Film%20Sound%20Aesthetics/Film%20Sound%20Aesthetics.html",
+            "children": []
+          },
+          {
+            "name": "Music Styles and Genres",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Music%20styles%20and%20genres/Music%20styles%20and%20genres.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Music%20styles%20and%20genres/Music%20styles%20and%20genres.html",
+            "children": []
+          },
+          {
+            "name": "Principles of Ensemble Conducting",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Aesthetics/Principles%20of%20Ensemble%20Conducting/Principles%20of%20Ensemble%20Conducting.html",
+            "type": "page",
+            "relativePath": "Sound%20Aesthetics/Principles%20of%20Ensemble%20Conducting/Principles%20of%20Ensemble%20Conducting.html",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Sound Design",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/index.html",
+        "type": "page",
+        "relativePath": "Sound%20Design/index.html",
+        "children": [
+          {
+            "name": "Art of Music Recording",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Art%20of%20Music%20Recording/Art%20of%20Music%20Recording.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Art%20of%20Music%20Recording/Art%20of%20Music%20Recording.html",
+            "children": []
+          },
+          {
+            "name": "Art of Sound Effects Recording",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Art%20of%20Sound%20Effects%20Recording/IMDM_AoSER.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Art%20of%20Sound%20Effects%20Recording/IMDM_AoSER.html",
+            "children": []
+          },
+          {
+            "name": "Basics of Sound Design and Music Composition",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Basics%20of%20Sound%20Design%20and%20Music%20Composition/Basics_of_SD_and_Mus_Comp_EN.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Basics%20of%20Sound%20Design%20and%20Music%20Composition/Basics_of_SD_and_Mus_Comp_EN.html",
+            "children": []
+          },
+          {
+            "name": "Casting Directing and Designing Session for Voice-over",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Casting%20directing%20and%20designing%20session%20for%20voice-over/Casting%20directing%20and%20designing%20session%20for%20voice-over_5.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Casting%20directing%20and%20designing%20session%20for%20voice-over/Casting%20directing%20and%20designing%20session%20for%20voice-over_5.html",
+            "children": []
+          },
+          {
+            "name": "Casting Session for Dubbing",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Casting%20Session%20for%20Dubbing/Casting_Session_for_Dubbing.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Casting%20Session%20for%20Dubbing/Casting_Session_for_Dubbing.html",
+            "children": []
+          },
+          {
+            "name": "Computer Sound Synthesis Fundamentals",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Computer%20Sound%20Synthesis%20Fundamentals/Computer%20Sound%20Synthesis.htm",
+            "type": "page",
+            "relativePath": "Sound%20Design/Computer%20Sound%20Synthesis%20Fundamentals/Computer%20Sound%20Synthesis.htm",
+            "children": []
+          },
+          {
+            "name": "Designing ADR Session",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Designing%20ADR%20Session/Designing%20ADR%20Session.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Designing%20ADR%20Session/Designing%20ADR%20Session.html",
+            "children": []
+          },
+          {
+            "name": "Directing Dialogue Replacement",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Directing%20Dialogue%20Replacement/Directing%20dialogue%20replacement.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Directing%20Dialogue%20Replacement/Directing%20dialogue%20replacement.html",
+            "children": []
+          },
+          {
+            "name": "Introduction to Interaction",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Introduction%20to%20Interaction/Intro%20to%20Interaction.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Introduction%20to%20Interaction/Intro%20to%20Interaction.html",
+            "children": []
+          },
+          {
+            "name": "MIDI Protocol, Digital Interface and Connections",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/MIDI/MIDI_IMDM-EN.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/MIDI/MIDI_IMDM-EN.html",
+            "children": []
+          },
+          {
+            "name": "Music Databases Design and Indexing Methods",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Music%20databases%20design%20and%20indexing%20methods/MDB.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Music%20databases%20design%20and%20indexing%20methods/MDB.html",
+            "children": []
+          },
+          {
+            "name": "Musical Compositional Techniques",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Musical%20Compositional%20Techniques/Musical%20Compositional%20Techniques.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Musical%20Compositional%20Techniques/Musical%20Compositional%20Techniques.html",
+            "children": []
+          },
+          {
+            "name": "Programming Interactive Sound",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Programming%20Interactive%20Sound/Programming%20Interactive%20Sound.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Programming%20Interactive%20Sound/Programming%20Interactive%20Sound.html",
+            "children": []
+          },
+          {
+            "name": "Samples vs. Procedural Audio",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Samples%20vs.%20procedural%20audio/Samples%20vs.%20procedural%20audio%206.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Samples%20vs.%20procedural%20audio/Samples%20vs.%20procedural%20audio%206.html",
+            "children": []
+          },
+          {
+            "name": "Sequencers and MIDI Instruments",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Sequencers%20and%20MIDI%20Instruments/Sequencers%20and%20MIDI%20instruments.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Sequencers%20and%20MIDI%20Instruments/Sequencers%20and%20MIDI%20instruments.html",
+            "children": []
+          },
+          {
+            "name": "Sonification - Introduction",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Sound%20Design/Sonification%20-%20Introduction/Sonification%20-%20Introduction.html",
+            "type": "page",
+            "relativePath": "Sound%20Design/Sonification%20-%20Introduction/Sonification%20-%20Introduction.html",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Telecommunications for Multimedia",
+        "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Telecommunications%20for%20Multimedia/index.html",
+        "type": "page",
+        "relativePath": "Telecommunications%20for%20Multimedia/index.html",
+        "children": [
+          {
+            "name": "Telecommunications for Multimedia (Part I, Part II)",
+            "url": "https://www.ire.pw.edu.pl/~mmedia/pub/Telecommunications%20for%20Multimedia/t4mm/t4mm.html",
+            "type": "page",
+            "relativePath": "Telecommunications%20for%20Multimedia/t4mm/t4mm.html",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

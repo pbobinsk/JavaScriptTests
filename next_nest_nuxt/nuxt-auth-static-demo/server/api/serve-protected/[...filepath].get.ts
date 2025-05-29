@@ -7,6 +7,8 @@ import mime from 'mime-types'; // Pamiętaj o instalacji: npm install mime-types
 import { head as vercelBlobHead } from '@vercel/blob';
 import type { HeadBlobResult } from '@vercel/blob';
 
+import { START_URL } from '~/scripts/config/scraper-config';
+
 export default defineEventHandler(async (event) => {
   // 1. Sprawdź autoryzację (ta sama logika co w middleware, ale tutaj jest kluczowa)
   const userSessionCookie = getCookie(event, 'user-session');
@@ -59,7 +61,8 @@ export default defineEventHandler(async (event) => {
 
   console.info(`[serve-protected] !!! Path: "${requestedPath}" decoded  to "${decodedPath}`);
   requestedPath = decodedPath;
-  let publicRequestedPath = '/protected-content/'+decodedPath;
+  //let publicRequestedPath = '/protected-content/'+decodedPath;
+  let publicRequestedPath = decodedPath;
 
   if (decodedPath.endsWith('favicon.ico')) {
     // Załóżmy, że masz globalną faviconę w public/favicon.ico
@@ -107,7 +110,9 @@ export default defineEventHandler(async (event) => {
       console.log( ` UWAGA  ${protocol}://${host}`);
     }
 
-    publicRequestedPath = `${protocol}://${host}${publicRequestedPath}`;
+    // publicRequestedPath = `${protocol}://${host}${publicRequestedPath}`;
+
+    publicRequestedPath = `${START_URL}${publicRequestedPath}`;
 
     console.log(`[view-blob] Fetched public URL for ${requestedPath}: ${publicRequestedPath}`);
 

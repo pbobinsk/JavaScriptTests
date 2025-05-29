@@ -8,6 +8,10 @@ import  { list } from '@vercel/blob';
 //import manifestData from '~/server/data/public-files-manifest.json';
 //import manifestData from '~/server/data/blob-tree-manifest.json';
 
+import manifestData from '~/server/data/scraped-simplified-manifest.json';
+
+let useManifest = true;
+
 
 interface BlobTreeEntry {
   name: string,
@@ -353,6 +357,7 @@ export default defineEventHandler(async (event) => {
   // 2. Listuj pliki HTML z katalogu server/protected-assets/
   //const baseDir = path.resolve(process.cwd(), 'public/protected-assets');
 
+  if (!useManifest) {
 
   try {
     // const htmlFiles = await listHtmlFilesRecursive(baseDir, baseDir);
@@ -422,28 +427,30 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 500, statusMessage: 'Internal Server Error', message: 'Nie udało się wylistować plików HTML.' });
   }
 
+  } else {
+  try {
+    // Opcja A: Bezpośrednie zwrócenie zaimportowanych danych (preferowane, jeśli działa)
+    if (manifestData) {
 
-  // try {
-  //   // Opcja A: Bezpośrednie zwrócenie zaimportowanych danych (preferowane, jeśli działa)
-  //   if (manifestData) {
-  //     console.log('[public-files-list] Zwracanie danych z zaimportowanego manifestu JSON.');
-  //     console.log(manifestData as FileSystemEntry[]);
-  //     return manifestData as FileSystemEntry[]; // Rzutowanie typu dla pewności
-  //   } else {
-  //     // To nie powinno się zdarzyć, jeśli import się powiedzie
-  //     throw new Error('Manifest data could not be imported.');
-  //   }
-  //   } catch (error: any) {
-  //   console.error('[public-files-list] Błąd podczas odczytu lub parsowania manifestu plików:', error);
-  //   // Zwróć bardziej szczegółowy błąd, jeśli to możliwe
-  //   const errorMessage = error.code === 'ENOENT' 
-  //       ? 'Plik manifestu nie został znaleziony. Upewnij się, że skrypt generujący został uruchomiony.'
-  //       : 'Nie udało się załadować listy plików z manifestu.';
-  //   throw createError({ 
-  //       statusCode: 500, 
-  //       statusMessage: 'Internal Server Error', 
-  //       message: errorMessage,
-  //       cause: error // Dodaj oryginalny błąd do przyczyny dla lepszego debugowania
-  //   });
-  // }
+      console.log('[public-files-list] Zwracanie danych z zaimportowanego manifestu JSON.');
+      console.log(manifestData as FileSystemEntry[]);
+      return manifestData as FileSystemEntry[]; // Rzutowanie typu dla pewności
+    } else {
+      // To nie powinno się zdarzyć, jeśli import się powiedzie
+      throw new Error('Manifest data could not be imported.');
+    }
+    } catch (error: any) {
+    console.error('[public-files-list] Błąd podczas odczytu lub parsowania manifestu plików:', error);
+    // Zwróć bardziej szczegółowy błąd, jeśli to możliwe
+    const errorMessage = error.code === 'ENOENT' 
+        ? 'Plik manifestu nie został znaleziony. Upewnij się, że skrypt generujący został uruchomiony.'
+        : 'Nie udało się załadować listy plików z manifestu.';
+    throw createError({ 
+        statusCode: 500, 
+        statusMessage: 'Internal Server Error', 
+        message: errorMessage,
+        cause: error // Dodaj oryginalny błąd do przyczyny dla lepszego debugowania
+    });
+  }
+}
 });
